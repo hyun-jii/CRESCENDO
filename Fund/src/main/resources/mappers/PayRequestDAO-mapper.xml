@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<mapper namespace="com.crescendo.spring.user.model.dao.payrequest.IPayRequestDAO">
+
+
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+   <!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+   <!--  type은 VO명 id아무거나  -->
+   <!--  property = vo안에 속성이름 -->
+   <!--  resultMap type안에 NoticeVO는 config.xml파일에서 설정해준 값 사용 -->
+   <resultMap type="PayRequestVO" id="payRequestResultSet">
+      <id column="PR_NUM" property="prNum"/>
+      <result column="F_NUM" property="fNum"/>
+      <result column="PR_CARD" property="prCard" />
+      <result column="PR_BIRTH" property="prBirth"/>
+      <result column="PR_PW" property="prPw"/>
+      <result column="PR_EXPIRE" property="prExpire"/>
+      <result column="PR_DATE" property="prDate"/>
+      <result column="PR_KEY" property="prKey"/>
+   </resultMap>
+	
+	<insert id="creditInfoInsert">
+		INSERT INTO TBL_PAY_REQUEST(PR_NUM, F_NUM, PR_CARD, PR_BIRTH, PR_PW, PR_EXPIRE, PR_DATE)
+		VALUES(SEQ_PAY_REQUEST.NEXTVAL, #{fNum}, #{prCard}, #{prBirth}, #{prPw}, #{prExpire}, TO_CHAR(SYSDATE,'YYYY-MM-DD'))
+	<selectKey keyProperty="prNum" resultType="int" order="AFTER">
+		SELECT SEQ_PAY_REQUEST.CURRVAL FROM DUAL
+	</selectKey>
+		
+	</insert>
+
+</mapper>

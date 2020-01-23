@@ -1,0 +1,79 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<mapper namespace="com.crescendo.spring.admin.model.dao.Rletter.IRletterDAO">
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+   <!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+   <!--  type은 VO명 id아무거나  -->
+   <!--  property = vo안에 속성이름 -->
+   <!--  resultMap type안에 NoticeVO는 config.xml파일에서 설정해준 값 사용 -->
+   <resultMap type="RletterVO" id="RletterResultSet">
+      <id column="LR_NUM" property="lrNum"/>
+     <result column="USER_NUM" property="userNum"/>
+      <result column="ADMIN_NUM" property="adminNum"/>
+      <result column="LR_TITLE" property="lrTitle" />
+      <result column="LR_CONTENT" property="lrContent"/>
+      <result column="LR_DATE" property="lrDate"/>
+      <result column="LR_READDATE" property="lrReadDate"/>
+      <result column="LR_SDELETE" property="lrSdelete"/>
+      <result column="LR_RDELETE" property="lrRdelete"/>
+      <result column="LR_ID" property="lrId"/>
+   </resultMap>
+   
+   
+    <!-- 받은쪽지 출력 -->
+	<select resultType="RletterVO" id="RletterList">
+		 SELECT LR_NUM, USER_NUM, LR_TITLE, LR_CONTENT, LR_DATE, LR_READDATE, LR_SDELETE, LR_RDELETE,
+		 NVL2(LR_READDATE, '읽음', '안읽음') "LR_OR"                                                                                            
+		 FROM  ADMIN_LETTER_RECEIVE
+		 ORDER BY LR_DATE DESC
+	</select>
+	
+	<!-- 받은쪽지 삭제-->
+	<delete id="deleteRletter">
+		DELETE 
+		FROM  TBL_LETTER_RECEIVE
+		WHERE LR_NUM=#{lrNum}
+	</delete>
+	
+	<!-- 읽은날짜 업데이트 -->
+	<update id="ReadDateUpdate">
+	    UPDATE  TBL_LETTER_RECEIVE
+   		SET LR_READDATE=SYSDATE
+   		WHERE LR_NUM = #{lrNum}  AND  LR_READDATE IS NULL
+	</update>
+	
+	<!-- 받은쪽지 확인 폼에 데이터 보내기 -->
+	<select id="RletterConfirm" resultType="RletterVO">
+		SELECT LR_NUM,  LR_TITLE, LR_CONTENT, LR_DATE
+		FROM  TBL_LETTER_RECEIVE
+		WHERE LR_NUM =#{lrNum}
+	</select>
+	
+	
+	
+	
+	<!-- 답장폼에 userNum 보내기 -->
+	<select id="RletterReplyConfirm" resultType="RletterVO">
+		SELECT LR_NUM, ADMIN_NUM,  LR_TITLE, LR_CONTENT, LR_DATE, USER_NUM
+		FROM ADMIN_LETTER_RECEIVE
+		WHERE LR_NUM =#{lrNum}
+	</select>
+	
+	<!-- 관리자가 받은쪽지 삭제했을 경우  -->
+	<update id="RDeleteDateUpdate">
+	    UPDATE TBL_LETTER_RECEIVE
+   		SET LR_RDELETE=SYSDATE
+   		WHERE LR_NUM = #{lrNum}  AND LR_RDELETE IS NULL
+	</update>
+	
+	
+	<!-- 관리자 받은쪽지에 insert -->
+	<insert id="insertAdminRletter">
+	   INSERT INTO TBL_LETTER_RECEIVE(LR_NUM, ADMIN_NUM, USER_NUM,  LR_TITLE, LR_CONTENT, LR_DATE, LR_READDATE, LR_SDELETE, LR_RDELETE, LR_ID)
+	   VALUES(SEQ_RECEIVE.NEXTVAL,9999,#{userNum}, #{lrTitle}, #{lrContent}, SYSDATE,NULL,NULL,NULL, #{lrId})
+	</insert> 
+	
+
+</mapper>

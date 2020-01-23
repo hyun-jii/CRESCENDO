@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.crescendo.spring.user.model.dao.project.app.IAppDAO">
+
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+	<!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+	<!--  type은 VO명 id아무거나  -->
+	<!--  property = vo안에 속성이름 -->
+	<!--  resultMap type은 config.xml파일에서 설정해준 값 사용 -->
+	<resultMap type="AppVO" id="appResultSet">
+		<id column="APP_NUM" property="appNum"/>
+		<result column="MA_NUM" property="maNum"/>
+		<result column="EVA_NUM" property="evaNum"/>
+	</resultMap>
+	
+   
+	
+	<!-- 심사 대기중인 프로젝트 수 조회 -->
+	<select id="prjCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM TBL_APP
+		WHERE EVA_NUM IN (1,2)
+	</select>
+
+</mapper>

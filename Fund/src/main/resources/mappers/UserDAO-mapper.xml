@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.crescendo.spring.user.model.dao.IUserDAO">
+
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+	<!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+	<!--  type은 VO명 id아무거나  -->
+	<!--  property = vo안에 속성이름 -->
+	<!--  resultMap type은 config.xml파일에서 설정해준 값 사용 -->
+	<resultMap type="UserVO" id="userResultSet">
+		<id column="USER_NUM" property="userNum"/>
+		<result column="USER_NAME" property="userName"/>
+		<result column="USER_PW" property="userPw" />
+		<result column="USER_EMAIL" property="userEmail"/>
+		<result column="USER_INDATE" property="userInDate"/>
+		<result column="USER_PROFILE" property="userProfile"/>
+		<result column="USER_ADDR" property="userAddr"/>
+		<result column="USER_TEL" property="userTel"/>
+		<result column="ZIPCODE" property="zipCode"/>
+	</resultMap>
+	
+	
+
+	<!-- 전체회원 조회 -->
+	<select resultType="UserVO" id="userList">
+		SELECT USER_NUM, USER_NAME, USER_EMAIL, TO_CHAR(USER_INDATE, 'YYYY-MM-DD') AS "USER_INDATE", ZIPCODE, USER_ADDR, USER_TEL
+		FROM TBL_USER
+		ORDER BY USER_INDATE DESC
+	</select>
+	
+	<!-- 회원 정보 불러오기 -->
+	<select id="getReadData" resultType="UserVO">
+		SELECT USER_NUM, USER_NAME, USER_EMAIL, USER_PW, USER_INDATE, USER_PROFILE, ZIPCODE, USER_ADDR, USER_TEL
+		FROM TBL_USER
+		WHERE USER_EMAIL = #{userEmail}
+	</select>
+	
+	
+	<!-- 중복 이름 개수 확인 -->	
+	<select id = "checkName" parameterType="UserVO" resultMap="userResultSet">
+	SELECT USER_NAME
+	FROM TBL_USER
+	WHERE USER_NAME=#{userName}
+	</select>
+	
+	<!-- 회원가입폼 insert하는 부분 -->
+	<insert id="userInsert"  parameterType="UserVO">
+		INSERT INTO TBL_USER(USER_NUM, USER_NAME, USER_PW, USER_EMAIL, USER_INDATE
+		, USER_PROFILE, USER_ADDR, USER_TEL,ZIPCODE)
+		VALUES(SEQ_USER.NEXTVAL,#{userName},#{userPw},#{userEmail}
+		,SYSDATE,'',#{userAddr},#{userTel},#{zipCode})
+	</insert>
+	
+	
+	
+	<!-- 회원 프로필 업데이트 -->
+	<!-- 암호화는 나중에 할 것임 -->
+	<update id="userUpdate">
+		UPDATE TBL_USER
+		SET USER_NAME = #{userName}, USER_PW = #{userPw}, USER_PROFILE = #{userProfile}
+		, USER_ADDR= #{userAddr}, USER_TEL = #{userTel}, ZIPCODE = #{zipCode}
+		WHERE USER_NUM = #{userNum}	
+	</update>
+
+	
+	<!--  이메일 중복검사 -->
+	<select id = "checkEmail" parameterType="UserVO" resultMap="userResultSet">
+	 SELECT USER_EMAIL
+	FROM TBL_USER
+	WHERE USER_EMAIL=#{userEmail}
+	</select>
+	 
+	<!--  카카오, 회원 테이블 회원가입 -->
+	<insert id="kakaoinsert" parameterType="UserVO">
+	INSERT INTO	TBL_USER(USER_NUM,USER_NAME,USER_PW,USER_EMAIL,USER_INDATE,USER_PROFILE)
+	VALUES(SEQ_USER.NEXTVAL,#{userName},#{userPw},#{userEmail},SYSDATE,#{userProfile})
+	</insert>
+
+	<!--  네이버 회원 테이블 회원가입  -->
+	<insert id="naverinsert" parameterType="UserVO">
+	INSERT INTO TBL_USER(USER_NUM,USER_NAME,USER_PW,USER_EMAIL,USER_INDATE,USER_PROFILE)
+	VALUES(SEQ_USER.NEXTVAL,#{userName},#{userPw},#{userEmail},SYSDATE,#{userProfile})
+	</insert>
+	
+	<!--  비밀번호  변경 update -->
+	<update id="updatepw" parameterType="UserVO">
+	UPDATE TBL_USER
+	SET USER_PW = #{userPw}
+	WHERE USER_EMAIL = #{userEmail}
+	</update>	
+</mapper>
+
+
+
+
+
+
+

@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<mapper namespace="com.crescendo.spring.admin.model.dao.Sletter.ISletterDAO">
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+   <!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+   <!--  type은 VO명 id아무거나  -->
+   <!--  property = vo안에 속성이름 -->
+   <!--  resultMap type안에 NoticeVO는 config.xml파일에서 설정해준 값 사용 -->
+   <resultMap type="SletterVO" id="SletterResultSet">
+      <id column="LS_NUM" property="lsNum"/>
+     <result column="USER_NUM" property="userNum"/>
+      <result column="ADMIN_NUM" property="adminNum"/>
+      <result column="LS_TITLE" property="lsTitle" />
+      <result column="LS_CONTENT" property="lsContent"/>
+      <result column="LS_DATE" property="lsDate"/>
+      <result column="LS_SDELETE" property="lsSdelete"/>
+      <result column="LS_RDELETE" property="lsRdelete"/>
+   </resultMap>
+   
+   
+    <!-- 보낸쪽지 출력 -->
+	<select resultType="SletterVO" id="SletterList">
+		SELECT LS_NUM, USER_NUM, LS_TITLE, LS_CONTENT, LS_DATE, LS_SDELETE, LS_RDELETE
+		FROM ADMIN_LETTER_SEND
+		ORDER BY LS_NUM DESC
+	</select>
+	
+	<!-- 보낸쪽지 삭제-->
+	<delete id="deleteSletter">
+		DELETE 
+		FROM TBL_LETTER_SEND
+		WHERE LS_NUM=#{lsNum}
+	</delete>
+	
+	<!-- 보낸쪽지 확인 폼에 데이터 보내기 -->
+	<select id="SletterConfirm" resultType="SletterVO">
+		SELECT LS_NUM,  LS_TITLE, LS_CONTENT, LS_DATE
+		FROM TBL_LETTER_SEND
+		WHERE LS_NUM =#{lsNum}
+	</select>
+	
+	<!-- 보낸쪽지 삭제날짜 업데이트 -->
+	<update id="SDeleteDateUpdate">
+	    UPDATE TBL_LETTER_SEND
+   		SET LS_SDELETE=SYSDATE
+   		WHERE LS_NUM = #{lsNum}  AND LS_SDELETE IS NULL
+	</update>
+	
+   
+	<!-- 관리자 보낸쪽지에 insert -->
+	<insert id="insertAdminSletter">
+	 INSERT INTO TBL_LETTER_SEND(LS_NUM, ADMIN_NUM, USER_NUM,  LS_TITLE, LS_CONTENT, LS_DATE)
+	 VALUES(SEQ_SEND.NEXTVAL, 9999, #{userNum}, #{lsTitle}, #{lsContent}, SYSDATE)
+	 <selectKey keyProperty="lsNum" resultType="int" order="AFTER">
+	 		SELECT SEQ_SEND.CURRVAL FROM DUAL
+	 </selectKey>
+	</insert>
+	
+
+
+</mapper>

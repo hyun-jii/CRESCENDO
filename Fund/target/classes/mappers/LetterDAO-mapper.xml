@@ -1,0 +1,135 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<mapper namespace="com.crescendo.spring.user.model.dao.letter.ILetterDAO">
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+   <!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+   <!--  type은 VO명 id아무거나  -->
+   <!--  property = vo안에 속성이름 -->
+   <!--  resultMap type안에 NoticeVO는 config.xml파일에서 설정해준 값 사용 -->
+   <resultMap type="LetterVO" id="letterResultSet">
+      <id column="LE_NUM" property="leNum"/>
+	  <result column="LE_SENDER" property="leSender" />
+	  <result column="LE_RECEIVER" property="leReceiver" />
+	  <result column="LE_TITLE" property="leTitle" />
+      <result column="LE_CONTENT" property="leContent"/>
+      <result column="LE_DATE" property="leDate"/>
+      <result column="LE_READDATE" property="leReadDate"/>
+      <result column="LE_SDELETE" property="leSdelete"/>
+      <result column="LE_RDELETE" property="leRdelete"/>
+      <result column="LE_ID" property="leId"/>
+   </resultMap>
+   
+   
+   <!-- 받은쪽지 출력 -->
+	<select resultType="LetterVO" id="letterList">
+		 SELECT LE_NUM, LE_SENDER, LE_RECEIVER, LE_TITLE, LE_CONTENT, LE_DATE, LE_READDATE, LE_SDELETE, LE_RDELETE,LE_ID                                                                                      
+		 FROM TBL_LETTER
+		 WHERE LE_RECEIVER =#{userNum}
+	</select>
+	
+	 <!-- 보낸쪽지 출력 -->
+	<select resultType="LetterVO" id="sletterList">
+		 SELECT LE_NUM,  LE_SENDER,  LE_RECEIVER, LE_TITLE, LE_CONTENT, LE_DATE, LE_READDATE, LE_SDELETE, LE_RDELETE,LE_ID                                                                           
+		 FROM TBL_LETTER
+		 WHERE LE_SENDER =#{userNum}
+	</select>
+	
+	<!-- 받은쪽지 삭제-->
+	<delete id="deleteLetter">
+		DELETE 
+		FROM  TBL_LETTER
+		WHERE LE_NUM=#{leNum}
+	</delete>
+	
+	<!-- 보낸쪽지 삭제-->
+	<delete id="deleteSLetter">
+		DELETE 
+		FROM  TBL_LETTER
+		WHERE LE_NUM=#{leNum}
+	</delete>
+	
+	<!-- 받은쪽지 읽은날짜 업데이트 -->
+	<update id="ReadDateUpdate">
+	    UPDATE  TBL_LETTER
+   		SET  LE_READDATE =SYSDATE
+   		WHERE LE_NUM = #{leNum}  AND LE_READDATE IS NULL
+	</update>
+	
+	<!-- 받은쪽지 확인 폼에 데이터 보내기 -->
+	<select id="letterConfirm" resultType="LetterVO">
+		 SELECT LE_NUM, LE_SENDER, LE_TITLE, LE_CONTENT, LE_DATE, LE_READDATE, LE_SDELETE, LE_RDELETE                                                                                      
+		 FROM  TBL_LETTER
+		WHERE LE_NUM =#{leNum}
+	</select>
+	
+	<!-- 보낸쪽지 확인 폼에 데이터 보내기 -->
+	<select id="letterSConfirm" resultType="LetterVO">
+		 SELECT LE_NUM, LE_RECEIVER, LE_TITLE, LE_CONTENT, LE_DATE, LE_READDATE, LE_SDELETE, LE_RDELETE                                                                                      
+		 FROM  TBL_LETTER
+		WHERE LE_NUM =#{leNum}
+	</select>
+	
+	<!-- 받은쪽지 답장폼에 데이터 보내기 -->
+	<select id="letterReplyConfirm" resultType="LetterVO">
+		SELECT LE_NUM, LE_TITLE, LE_CONTENT, LE_DATE, LE_SENDER, LE_RECEIVER
+		FROM TBL_LETTER
+		WHERE LE_NUM =#{leNum}
+	</select>
+	
+	<!-- 받은쪽지 삭제날짜 업데이트 -->
+	<update id="DeleteDateUpdate">
+	    UPDATE TBL_LETTER
+   		SET  LE_RDELETE =SYSDATE
+   		WHERE LE_NUM = #{leNum}  AND LE_RDELETE IS NULL
+	</update>
+	
+	<!-- 보낸쪽지 삭제날짜 업데이트 -->
+	<update id="DeleteSDateUpdate">
+	    UPDATE TBL_LETTER
+   		SET  LE_SDELETE =SYSDATE
+   		WHERE LE_NUM = #{leNum}  AND LE_SDELETE IS NULL
+	</update>
+	
+	
+	<!-- 답장보내기  -->
+    <!-- 사용자 보낸쪽지에 insert (사용자와 사용자끼리 주고받았을 경우) -->
+	<insert id="insertLetter">
+	 INSERT INTO TBL_LETTER(LE_NUM, LE_RECEIVER, LE_SENDER, LE_TITLE, LE_CONTENT, LE_DATE, LE_READDATE, LE_SDELETE, LE_RDELETE)
+	 VALUES(SEQ_LETTER.NEXTVAL, #{leReceiver}, #{leSender}, #{leTitle}, #{leContent}, SYSDATE,NULL,NULL,NULL)
+	</insert> 
+	
+	<!-- 사용자 보낸쪽지에 insert  (사용자가 관리자에게 쪽지를 보냈을 경우)-->
+	<insert id="userSendAdmin">
+	 INSERT INTO TBL_LETTER(LE_NUM, LE_RECEIVER, LE_SENDER, LE_TITLE, LE_CONTENT, LE_DATE, LE_READDATE, LE_SDELETE, LE_RDELETE)
+	 VALUES(SEQ_LETTER.NEXTVAL,  NULL,  #{leSender}, #{leTitle}, #{leContent}, SYSDATE,NULL,NULL,NULL)
+	 <selectKey keyProperty="leNum" resultType="int" order="AFTER">
+	 	SELECT SEQ_LETTER.CURRVAL FROM DUAL
+	 </selectKey>
+	</insert> 
+
+	
+	<!-- 사용자 쪽지에 insert (관리자가 사용자에게 쪽지를 보냈을 경우) -->
+	<insert id="adminSendUser">
+	 INSERT INTO TBL_LETTER(LE_NUM, LE_RECEIVER, LE_SENDER, LE_TITLE, LE_CONTENT, LE_DATE, LE_READDATE, LE_SDELETE, LE_RDELETE, LE_ID)
+	 VALUES(SEQ_LETTER.NEXTVAL, #{leReceiver},NULL, #{leTitle}, #{leContent}, SYSDATE,NULL,NULL,NULL, #{leId})
+	</insert> 
+	
+	<!-- 사용자가 관리자에게 받은쪽지를 delete 시켰을경우 -->
+	<update id="userDeleteadmindate">
+	 UPDATE TBL_LETTER_SEND
+	 SET LS_RDELETE = SYSDATE
+	 WHERE LS_NUM = #{leId}
+	</update>
+	
+	<!-- 사용자가 관리자에게 보내는쪽지를 delete 시켰을경우 -->
+	<update id="userDeleteadminsdate">
+	 UPDATE TBL_LETTER_RECEIVE
+	 SET LR_SDELETE = SYSDATE
+	 WHERE LR_ID = #{leNum}
+	</update>
+	
+	
+
+</mapper>

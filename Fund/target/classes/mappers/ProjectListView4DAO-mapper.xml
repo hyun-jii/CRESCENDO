@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  namespace는 패키지 경로를 포함한 전체이름을 가진 구문을 구분하기 위해 필수로 사용해야한다.
+	  namespace는 인터페이스 바인딩을 가능하게 한다.
+	  
+	  
+	  
+ -->
+ 
+<!--  namespace는 DAO인터페이스의 경로를 적어줌
+ 이유 : dao인터페이스에 선언된 메소드 이름과 여기 id값을  매핑시켜야 하기 때문 
+ 즉, 작업해야하는 dao인터페이스의 패키지명을 적어줘야한다. --> 
+ 
+<mapper namespace="com.crescendo.spring.admin.model.dao.projectlistview4.IProjectListView4DAO">
+
+<!--  ProjectListView3  -->
+
+
+	<resultMap type="ProjectListView4VO" id="projectlistview4ResultSet">
+		<id column="PRO_NUM" property="proNum"/>
+		<result column="CA_NAME" property="caName"/>
+		<result column="PRJ_TITLE" property="prjTitle"/>
+		<result column="PRJ_GOAL" property="prjGoal"/>
+		<result column="MA_NAME" property="maName"/>
+		<result column="PERCENT" property="percent"/>
+		<result column="TOTAL_MONEY" property="totalMoney"/>
+		<result column="SUPPORTER" property="supporter"/>
+		<result column="MA_ACCOUNT" property="maAccount"/>
+		<result column="FINAL_DAY" property="finalDay"/>
+		<result column="FINAL_DATE" property="finalDate"/>
+		<result column="MA_BANK" property="maBank"/>
+		<result column="MA_ACNAME" property="maAcname"/>
+		<result column="USER_NUM" property="userNum"/>
+		
+	
+	</resultMap>
+
+	<select id="failProjectList4" resultType="ProjectListView4VO">
+		SELECT PRO_NUM, USER_NUM, CA_NAME, PRJ_TITLE, PRJ_GOAL,MA_NAME,PERCENT
+   			 ,TOTAL_MONEY, SUPPORTER, MA_ACCOUNT,TO_CHAR(TO_DATE(FINAL_DAY,'YY/MM/DD')) AS "FINAL_DAY",TO_CHAR(FINAL_DATE,'YYYY-MM-DD') AS "FINAL_DATE",MA_BANK,MA_ACNAME
+		FROM VIEW_ALL6
+		WHERE PRO_STA =  '실패'
+		GROUP BY PRO_NUM, USER_NUM,CA_NAME, PRJ_TITLE, PRJ_GOAL,MA_NAME,PERCENT
+        		, TOTAL_MONEY, SUPPORTER, MA_ACCOUNT,FINAL_DAY,FINAL_DATE,MA_BANK,MA_ACNAME,MA_ACNAME
+        ORDER BY FINAL_DATE DESC
+	</select>
+	 
+	<select id="successProjectList4" resultType="ProjectListView4VO">
+		SELECT PRO_NUM, USER_NUM,CA_NAME, PRJ_TITLE, PRJ_GOAL,MA_NAME,PERCENT
+   			 ,TOTAL_MONEY, SUPPORTER, MA_ACCOUNT,TO_CHAR(TO_DATE(FINAL_DAY,'YYYY-MM-DD')) AS "FINAL_DAY", TO_CHAR(FINAL_DATE,'YYYY-MM-DD') AS "FINAL_DATE" ,MA_BANK,MA_ACNAME
+		FROM VIEW_ALL6
+		WHERE PRO_STA =  '성공'
+		GROUP BY PRO_NUM, USER_NUM,CA_NAME, PRJ_TITLE, PRJ_GOAL,MA_NAME,PERCENT
+        		, TOTAL_MONEY, SUPPORTER, MA_ACCOUNT,FINAL_DAY,FINAL_DATE,MA_BANK,MA_ACNAME,MA_ACNAME
+        ORDER BY FINAL_DATE DESC
+	</select>
+	
+</mapper>

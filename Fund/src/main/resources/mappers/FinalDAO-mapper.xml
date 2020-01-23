@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+
+<mapper namespace="com.crescendo.spring.user.model.dao.ffinal.IFinalDAO">
+
+	<resultMap type="FinalVO" id="finalResultSet">
+		<id column="FINAL_NUM" property="finalNum"/>
+		<result column="APP_NUM" property="appNum"/>
+		<result column="FINAL_STA" property="finalSta"/>
+		<result column="FINAL_DATE" property="finalDate"/>
+	</resultMap>
+
+	
+	<!-- app코드 평가 번호ㅡ> final테이블 insert -->
+	<insert id="finalinsert">
+		INSERT INTO TBL_FINAL(FINAL_NUM,APP_NUM,FINAL_STA,FINAL_DATE)
+		VALUES(SEQ_FINAL.NEXTVAL,);	
+	</insert>
+
+
+</mapper>
+
+      
+
+
+

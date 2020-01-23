@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8" ?> 
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.crescendo.spring.user.model.dao.log.ILogDAO">
+
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+	<!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+	<!--  type은 VO명 id아무거나  -->
+	<!--  property = vo안에 속성이름 -->
+	<!--  resultMap type은 config.xml파일에서 설정해준 값 사용 -->
+	<resultMap type="LogVO" id="logResultSet">
+		<id column="LOG_NUM" property="logNum"/>
+		<result column="USER_NUM" property="userNum"/>
+		<result column="LOG_DATE" property="logDate" />
+	</resultMap>
+	
+	<!-- 로그인시 로그 insert (시간까지 나오는지 확인할 것) -->
+	<insert id="insertLog">
+		INSERT INTO TBL_LOG(LOG_NUM, USER_NUM, LOG_DATE)
+		VALUES(SEQ_LOG.NEXTVAL, #{userNum}, TO_CHAR(SYSDATE, 'YYYY-MM-DD'))
+	</insert>
+	
+	<!-- 일자별 방문자 수 -->
+	<select id="dayCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM TBL_LOG
+		WHERE TO_CHAR(LOG_DATE, 'YYYY-MM-DD') = TO_CHAR(TO_DATE(#{day}, 'YYYY-MM-DD'), 'YYYY-MM-DD')
+	</select>
+	
+	<!-- 월별 방문자 수 -->
+	<select id="monthCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM TBL_LOG
+		WHERE TO_CHAR(LOG_DATE, 'YYYY-MM') = TO_CHAR(TO_DATE(#{month},'YYYY-MM'), 'YYYY-MM')
+	</select>
+	
+	<!-- 연도별 방문자 수 -->
+	<select id="yearCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM TBL_LOG
+		WHERE TO_CHAR(LOG_DATE, 'YYYY') = TO_CHAR(TO_DATE(#{year},'YYYY'), 'YYYY')
+	</select>
+	
+	<!-- 프로젝트별 창작자 마지막 로그인 날짜 -->
+	<select id="lastLogin" resultType="java.lang.String">
+		SELECT MAX(TO_CHAR(LOG_DATE, 'YYYY-MM-DD'))
+		FROM TBL_LOG
+		WHERE USER_NUM = #{userNum}
+	</select>
+
+
+</mapper>

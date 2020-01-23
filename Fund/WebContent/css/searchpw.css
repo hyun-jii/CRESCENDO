@@ -1,0 +1,211 @@
+@charset "UTF-8";
+.login-form
+{
+	margin-top: 200px;
+}
+
+.form-heading 
+{ 
+	color:#fff; 
+	font-size:23px;
+}
+
+/* 제목 */
+.panel h2
+{ 
+	color:#444444; 
+	font-size:26px; 
+	margin:0 0 20px 0;
+	font-weight: bold;
+}
+
+/* 비밀번호 찾기 전체적인 폼 */
+.login-form .form-control 
+{
+  background: #f7f7f7 none repeat scroll 0 0;
+  border: 1px solid #d4d4d4;
+  border-radius: 4px;
+  font-size: 14px;
+  height: 50px;
+  line-height: 50px;
+  margin-left: 10px;
+}
+
+/* 인증번호가 일치하지 않을 때 */
+#Msg
+{
+	margin-top: 15px;
+	color: red;
+	font-weight: bold;
+}
+
+hr
+{
+	width: 	
+}
+.main-div 
+{
+  background: #ffffff none repeat scroll 0 0;
+  border-radius: 2px;
+  margin: 10px auto 30px;
+  max-width: 570%;
+  padding: 50px 70px 70px 71px;
+}
+
+.login-form .form-group 
+{
+  margin-bottom:25px;
+  width: 400px;
+}
+.pwEmail
+{
+	font-weight: bold;
+	color: black;
+}
+
+.pwNum
+{
+	margin-right: 240px;
+	color: black;
+	font-weight: bold;
+}
+.login-form
+{
+	text-align:center;
+}
+.forgot a 
+{
+  color: #777777;
+  font-size: 14px;
+  text-decoration: underline;
+}
+.login-form  .btn.btn-primary 
+{
+  background: #f0ad4e none repeat scroll 0 0;
+  border-color: #f0ad4e;
+  color: #ffffff;
+  font-size: 14px;
+  width: 30%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+  margin-left: 120px;
+}
+.forgot 
+{
+  text-align: center; 
+  margin-bottom:20px;
+  margin-top: 30px;
+}
+
+/* 인증번호 발송 버튼 */
+.btn-email
+{
+	background-color: #ffc425;
+	color: white;
+	width: 110px;
+	border-radius: 3px;
+	height: 30px;
+	margin-left: 110px;
+	margin-bottom: 10px;
+}
+
+/* 비밀번호 재설정 버튼 */
+.btn-primary
+{
+	font-weight: bold;
+	font-size: 18px;
+	background-color: #ffc425;
+}
+.login-form .btn.btn-primary.reset 
+{
+  background: #777777 none repeat scroll 0 0;
+}
+
+/* 인증번호 팝업창 시작 */
+.modal-content
+{
+	margin: 0 auto;
+	padding: 15px;
+	text-align: center;
+	
+}
+
+.close
+{
+	background-color: #ffc425;
+	font-size:13px;
+	color: white; 
+	width: 60px; 
+	border-radius: 4px; 
+	height: 25px;
+	margin: 0 auto;
+	padding: 9px;
+}
+.modal-body
+{
+	font-size: 15px;
+	color: black;
+	width: 100%;
+}
+#modal-container-539360
+{
+	margin-top: 270px;
+}
+/* 인증번호 팝업창 종료 */
+
+
+/*===== 비밀번호 변경 후 메세지 페이지 =====*/
+.changePW p
+{
+	font-size: 18px;
+	color: black;
+	margin-top: 30px;
+	margin-bottom: 30px;
+}
+
+.btn-pwLog
+{
+	font-weight: bold;
+	font-size: 18px;
+	color: white;
+	background-color: #ffc425;
+	width: 200px;
+}
+
+@media screen and (max-width: 500px)
+{
+	/* 비밀변경완료 반응형 */
+	.main-fin
+	{
+	  background: #ffffff none repeat scroll 0 0;
+	  border-radius: 2px;
+	  margin: 10px auto 30px;
+	  max-width: 570%;
+	  padding: 50px 70px 200px 71px;
+	}
+	
+	.main-div
+	{
+	  background: #ffffff none repeat scroll 0 0;
+	  border-radius: 2px;
+	  margin: 10px auto 30px;
+	  max-width: 570%;
+	  padding: 0px 0px 0px 0px;
+	}
+	.btn-confirm 
+	{
+		margin-left: 30px;
+	}
+	.panel
+	{
+		margin-left: 30px;
+	}
+
+	.login-form  .btn.btn-primary 
+    {
+	  width: 40%;
+    }
+}
+
+

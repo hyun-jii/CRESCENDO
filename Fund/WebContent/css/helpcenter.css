@@ -1,0 +1,383 @@
+@charset "UTF-8";
+
+/* Header 공백 */
+.rightspace
+{
+	margin: 0 auto;
+	text-align: center;
+	margin-top: 100px;
+	width: 63%;
+    height: 1000px;   
+}
+
+/* 내용 공백 */
+.content
+{
+	margin-bottom: 50px;
+}
+	
+.content_border {border: 0; overflow: hidden; resize: none; background-color: white;}
+
+/* help 센터 start */
+
+/* help 센터 오른쪽 공간 */
+.rightspace
+{
+	width: 85%;
+	float: right;
+	height:90%;
+	background: #F6F6F6;
+	border: 2px solid #CACACA;
+}
+
+.righttext
+{
+	color: black;
+	margin-top: 6%;
+}
+.test
+{	
+	margin-top: 50px;
+	height: 85%;
+	width: 95%;
+}
+
+.wrapp
+{
+	position: relative;
+}
+
+/* 돋보기 사진 크기지정 */
+.fa-search
+{
+	color: black;
+	width: 30px;
+	height: 30px;
+}
+
+.wrapptext
+{
+	
+	margin-top: 20px;
+	width: 500px;
+	height: 50px;
+	float: left;
+	margin-left: 10px;
+	text-align: left;
+	color: black;
+	font-weight: bold;
+}
+
+.wrapptext p {font-size: 18px;}
+
+
+/* 검색창 */
+.example
+{
+	max-width: 300px;
+	margin-right: 30px;
+}
+
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 17px;
+  float: left;
+  width: 70%;
+  background: #f1f1f1;
+  margin-top: 50px;
+  height: 42px;
+  margin-right: -12px;
+}
+
+form.example button {
+    float: left;
+    width: 15%;
+    padding: 9px;
+    background: #ffc425;
+    color: white;
+    font-size: 15px;
+    border: 1px solid #ffc425;
+    border-left: none;
+    cursor: pointer;
+    margin-top: 50px;
+    height: 42px;
+    margin-bottom: 15px;
+}
+
+form.example button:hover {
+  background: gray;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+/* 헬프센터 게시판 */
+.table_style
+{
+	margin-top: 150px;
+}
+
+/* 게시판 목록 */
+.divTable{
+	display: table;
+	width: 90%;
+	margin: 0 auto;
+	color: black;
+	text-align: center;
+}
+.divTableRow {
+	display: table-row;
+	text-align: center;
+	border: 1px solid #999999;
+	font-size:12px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+
+.divTableNum
+{
+	border: 1px solid #cecece;
+	border-left:0px;
+	border-right:0px;
+	display: table-cell;
+	padding: 3px 10px;
+	width: 10%;
+}
+
+.divTableTitle
+{
+	border: 1px solid #cecece;
+	border-left:0px;
+	border-right:0px;
+	display: table-cell;
+	padding: 3px 10px;
+	width: 45%;
+	text-align: left;
+}
+
+.divTableDate
+{
+	border: 1px solid #cecece;
+	border-left:0px;
+	border-right:0px;
+	display: table-cell;
+	padding: 3px 10px;
+	width: 15%;
+}
+
+.divTablePer
+{
+	border: 1px solid #cecece;
+	border-left:0px;
+	border-right:0px;
+	display: table-cell;
+	padding: 3px 10px;
+	width: 10%;
+}
+
+/* 목록들 사이 공간 만들어 주는 코드 */
+.divTableRow div
+{
+	padding-top: 15px;
+	padding-bottom: 20px;
+}
+
+/* 문의하기 버튼 */
+.btn6 {
+  background-color: #ffc425;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'BenchNine', Arial, sans-serif;
+  font-size: 1em;
+  font-size: 15px;
+  line-height: 1em;
+  margin: 25px 30px;
+  outline: none;
+  padding: 10px 20px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 10px;
+}
+.btn6:before,
+.btn6:after {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+}
+
+/* 페이지네이션 */
+.pagenavi
+{
+	text-align: center;
+
+}
+
+
+
+/*================= 헬프센터 내용 start =====================*/
+.helpContent
+{
+	width: 90%;
+	height: 90%;
+	border: 3px;
+	text-align: left;
+	background-color: white;
+	resize: none;
+	margin-top: 50px;
+}
+
+.righttxt
+{
+	width: 80%;
+	height: 40%;
+	background-color: white;
+}
+
+.topTitle
+{
+	text-align: center;
+	margin-top: 30px;
+}
+
+.hCont
+{
+	text-align: center;
+	margin-top: 50px;
+}
+
+.wrapp4
+{
+	background-color: white;
+}
+
+/* 목록으로 버튼 */
+.btn2 
+{
+  background-color: #ffc425;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'BenchNine', Arial, sans-serif;
+  font-size: 1em;
+  font-size: 15px;
+  line-height: 1em;
+ 
+  outline: none;
+  padding: 10px 20px 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  border-radius: 10px;
+  margin-bottom: 50px;
+
+}
+.btn2:before, .btn2:after 
+{
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+}
+
+
+/*==========헬프센터 반응형 ============= */
+
+@media (max-width: 767px) 
+{
+	.blank2 
+	{
+		width: 100%;
+		height: 1800px;
+		margin-left: 35px;
+	}
+	
+	.wrapptext
+	{
+		width: 90%;
+
+	}
+	.topnav
+	{
+		margin-left:30px;
+		width:100%
+	}
+	
+	.justify-content-center
+	{
+		margin-right:80px;
+	}
+
+}
+
+@media (max-width:992px)
+{
+	.blank2
+	{
+		height: 1800px;	
+	}
+	
+	.pagenavi
+	{
+		width: 400px;
+	}
+}
+
+
+/* 반응형 코드 */
+@media screen and (max-width: 1200px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+}
+
+
+/*==========헬프센터내용 반응형 ============= */
+@media(max-width: 767px)
+{
+	.helpContent
+	{
+		width: 70%;
+		height: 1000px;
+	}
+}
+

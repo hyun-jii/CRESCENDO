@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  namespace는 패키지 경로를 포함한 전체이름을 가진 구문을 구분하기 위해 필수로 사용해야한다.
+	  namespace는 인터페이스 바인딩을 가능하게 한다.
+	  
+	  
+	  
+ -->
+ 
+<!--  namespace는 DAO인터페이스의 경로를 적어줌
+ 이유 : dao인터페이스에 선언된 메소드 이름과 여기 id값을  매핑시켜야 하기 때문 
+ 즉, 작업해야하는 dao인터페이스의 패키지명을 적어줘야한다. --> 
+ 
+<mapper namespace="com.crescendo.spring.admin.model.dao.projectlistview3.IProjectListView3DAO">
+
+<!--  ProjectListView3  -->
+
+
+	<resultMap type="ProjectListView3VO" id="projectlistview3ResultSet">
+		<id column="PRJ_NUM" property="prjNum"/>
+		<result column="PRJ_GOAL" property="prjGoal"/>
+		<result column="PO_MONEY" property="poMoney"/>
+		<result column="CA_NAME" property="caName"/>
+		<result column="PRJ_TITLE" property="prjTitle"/>
+		<result column="FINAL_DATE" property="finalDate"/>
+		<result column="MA_PERIOD" property="maPeriod"/>
+		<result column="MA_NAME" property="maName"/>
+		<result column="MA_ACCOUNT" property="maAccount"/>
+		<result column="REMAIN_DAY" property="remainDay"/>
+		<result column="FINAL_DAY" property="finalDay"/>
+		<result column="MA_BANK" property="maBank"/>
+		<result column="PERCENT" property="percent"/>
+		<result column="PRO_NUM" property="proNum"/>
+		<result column="MA_ACNAME" property="maAcname"/>
+		<result column="PRO_STA" property="proSta"/>
+		<result column="USER_NUM" property="userNum"/>
+		<result column="FINAL_DATE" property="finalDate"/>
+		<result column="PRO_STA" property="proSta"/>
+	</resultMap>
+
+	<select id="ingProjectList" resultType="ProjectListView3VO">
+		SELECT PRJ_NUM , CA_NAME, PRJ_TITLE, PRJ_GOAL, NVL(SUM(PO_MONEY),0) AS PO_MONEY
+       		 ,REMAIN_DAY,MA_BANK,MA_NAME,MA_ACNAME
+        	 ,TO_CHAR(TO_DATE(FINAL_DAY,'YYYY-MM-DD')) AS "FINAL_DAY"
+       		 ,PERCENT, MA_ACCOUNT,PRO_NUM,PRO_STA,FINAL_DATE,USER_NUM
+		FROM VIEW_ALL6	
+		WHERE REMAIN_DAY <![CDATA[>]]> 0 AND PRO_STA='진행중'
+		GROUP BY PRJ_NUM, CA_NAME, PRJ_TITLE, PRJ_GOAL ,REMAIN_DAY, MA_BANK, FINAL_DAY,MA_NAME,PERCENT,MA_ACCOUNT,PRO_NUM,MA_ACNAME,PRO_STA,FINAL_DATE,USER_NUM
+		ORDER BY FINAL_DATE DESC
+	</select>
+	
+	
+	
+</mapper>

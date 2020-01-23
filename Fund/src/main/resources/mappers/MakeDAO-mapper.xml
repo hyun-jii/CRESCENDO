@@ -1,0 +1,128 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<mapper namespace="com.crescendo.spring.user.model.dao.make.IMakeDAO">
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+   <!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+   <!--  type은 VO명 id아무거나  -->
+   <!--  property = vo안에 속성이름 -->
+   <!--  resultMap type안에 NoticeVO는 config.xml파일에서 설정해준 값 사용 -->
+   <resultMap type="MakeVO" id="makeResultSet">
+      <id column="USER_NUM" property="userNum"/>
+	  <result column="USER_NAME" property="userName" />
+	  <result column="PRJ_DATE" property="prjDate" />
+	  <result column="PRJ_TITLE" property="prjTitle" />
+	  <result column="PERCENT" property="percent" />
+	  <result column="TOTAL_MONEY" property="totalMoney" />
+	  <result column="MA_NAME" property="maName" />
+	  <result column="REMAIN_DAY" property="remainDay" />
+	  <result column="PRJ_IMG" property="prjImg" />
+	  <result column="PRO_STA" property="proSta" />
+	  <result column="EVA_STANDARD" property="evaStandard" />
+	  <result column="FINAL_STA" property="finalSta" />
+	  <result column="PRJ_NUM" property="prjNum" />
+	  <result column="MA_NUM" property="maNum" />
+	  <result column="PO_NUM" property="poNum" />
+	  <result column="PRO_NUM" property="proNum" />
+	  <result column="PO_MONEY" property="poMoney" />
+	  <result column="SUPPORTER" property="supporter" />
+   	  <result column="PRO_SHIP" property="proShip" />
+   	  <result column="PRO_FINISH" property="proFinish" />
+   	  <result column="P0_STA" property="poSta" />
+   	  <result column="USER_TEL" property="userTel" />
+	  <result column="USER_ADDR" property="userAddr" />
+	  <result column="RE_CONTENT" property="reContent" />
+	  <result column="F_INQUIRE" property="fInquire" />
+	  <result column="FINAL_DATE" property="finalDate" />
+	  <result column="APP_NUM" property="appNum" />
+	  <result column="USER_EMAIL" property="userEmail" />
+   </resultMap>
+   
+   
+    <!-- 만든 프로젝트 출력 -->
+    <select resultType="MakeVO" id="makeList">
+		    SELECT PRO_NUM,FINAL_STA, PRJ_TITLE, PRJ_IMG, MA_NAME, REMAIN_DAY, PERCENT, TOTAL_MONEY, SUPPORTER, PRO_STA, FINAL_DATE, PRO_SHIP, PRO_FINISH,USER_NUM,APP_NUM
+			FROM VIEW_ALL6
+			WHERE USER_NUM=#{userNum}
+			GROUP BY PRO_NUM,FINAL_STA,PRJ_TITLE, PRJ_IMG, MA_NAME, REMAIN_DAY, PERCENT, TOTAL_MONEY, SUPPORTER, PRO_STA,FINAL_DATE, PRO_SHIP, PRO_FINISH,USER_NUM,APP_NUM
+	</select>
+	
+	<!-- 만든프로젝트의 승인프로젝트 출력 -->
+	<select resultType="MakeVO" id="allowList">
+		SELECT PRO_NUM,FINAL_STA, PRJ_TITLE, PRJ_IMG, MA_NAME, REMAIN_DAY, PERCENT, TOTAL_MONEY, SUPPORTER, PRO_STA, FINAL_DATE, PRO_SHIP, PRO_FINISH,USER_NUM
+		FROM VIEW_ALL6	
+		WHERE USER_NUM = #{userNum} AND FINAL_NUM IS NOT NULL AND FINAL_STA='승인' AND PRO_STA IS NOT NULL
+		GROUP BY PRO_NUM,FINAL_STA,PRJ_TITLE, PRJ_IMG, MA_NAME, REMAIN_DAY, PERCENT, TOTAL_MONEY, SUPPORTER, PRO_STA,FINAL_DATE, PRO_SHIP, PRO_FINISH,USER_NUM
+   </select>
+   
+   <!-- 만든프로젝트의 거절프로젝트 출력 -->
+	<select resultType="MakeVO" id="refuseList">
+		SELECT PRO_NUM,FINAL_STA, PRJ_TITLE, PRJ_IMG, MA_NAME, REMAIN_DAY, PERCENT, TOTAL_MONEY, SUPPORTER, PRO_STA, FINAL_DATE, PRO_SHIP, PRO_FINISH,USER_NUM
+		FROM VIEW_ALL6	
+		WHERE USER_NUM = #{userNum} AND FINAL_NUM IS NOT NULL AND FINAL_STA !='승인'
+		GROUP BY PRO_NUM,FINAL_STA,PRJ_TITLE, PRJ_IMG, MA_NAME, REMAIN_DAY, PERCENT, TOTAL_MONEY, SUPPORTER, PRO_STA,FINAL_DATE, PRO_SHIP, PRO_FINISH,USER_NUM
+   </select>
+   
+   <!-- 만든프로젝트의 승인대기프로젝트 출력 -->
+	<select resultType="MakeVO" id="waitList">
+		SELECT PRO_NUM,FINAL_STA, PRJ_TITLE, PRJ_IMG, MA_NAME, REMAIN_DAY, PERCENT, TOTAL_MONEY, SUPPORTER, PRO_STA, FINAL_DATE, PRO_SHIP, PRO_FINISH,USER_NUM,APP_NUM
+		FROM VIEW_ALL6	
+		WHERE USER_NUM = #{userNum} AND FINAL_DATE IS NULL AND APP_NUM IS NOT NULL AND FINAL_NUM IS NULL
+		GROUP BY PRO_NUM,FINAL_STA,PRJ_TITLE, PRJ_IMG, MA_NAME, REMAIN_DAY, PERCENT, TOTAL_MONEY, SUPPORTER, PRO_STA,FINAL_DATE, PRO_SHIP, PRO_FINISH,USER_NUM,APP_NUM
+	 </select>
+	
+	<!-- 만든프로젝트 개수 출력 -->
+	<select resultType="java.lang.Integer" id="makeCount">
+		SELECT COUNT(DISTINCT(PRJ_TITLE))
+		FROM VIEW_ALL6
+		WHERE  USER_NUM=#{userNum}
+	</select>
+	
+	<!-- 승인프로젝트 개수 출력 -->
+	<select resultType="java.lang.Integer" id="allowCount">
+		SELECT COUNT(DISTINCT(PRO_NUM))
+		FROM VIEW_ALL6	
+		WHERE USER_NUM = #{userNum} AND FINAL_NUM IS NOT NULL AND PRO_STA IS NOT NULL
+	</select>
+	
+	<!-- 거절프로젝트 개수 출력 -->
+	<select resultType="java.lang.Integer" id="refuseCount">
+		SELECT COUNT(DISTINCT(PRJ_TITLE))
+		FROM VIEW_ALL6
+		WHERE USER_NUM = 3 AND FINAL_NUM IS NOT NULL AND PRO_STA IS NULL
+	</select>
+	
+	<!-- 승인대기프로젝트 개수 출력 -->
+	<select resultType="java.lang.Integer" id="waitCount">
+		SELECT COUNT(DISTINCT(PRJ_TITLE))
+		FROM VIEW_ALL6	
+		WHERE USER_NUM = #{userNum} AND FINAL_DATE IS NULL AND APP_NUM IS NOT NULL
+	</select>
+	
+	
+	<!-- 후원자 리스트 출력 -->
+	<select resultType="MakeVO" id="supporterList">
+		SELECT PRO_NUM,FINAL_STA, PRJ_TITLE, PRJ_IMG, MA_NAME, REMAIN_DAY, PERCENT, TOTAL_MONEY, SUPPORTER, PRO_STA, FINAL_DATE, PRO_SHIP, PRO_FINISH,USER_NUM, USER_NAME,PO_NUM,PO_STA, USER_TEL, USER_ADDR, RE_CONTENT, PO_MONEY, F_INQUIRE, USER_EMAIL
+		FROM VIEW_ALL6
+		WHERE USER_NUM = #{userNum} AND PRO_NUM=#{proNum} AND  FINAL_NUM IS NOT NULL  AND PO_NUM IS NOT NULL AND PO_STA ='Y'
+		GROUP BY PRO_NUM,FINAL_STA,PRJ_TITLE, PRJ_IMG, MA_NAME, REMAIN_DAY, PERCENT, TOTAL_MONEY, SUPPORTER, PRO_STA,FINAL_DATE, PRO_SHIP, PRO_FINISH,USER_NUM, USER_NAME,PO_NUM,PO_STA, USER_TEL, USER_ADDR, RE_CONTENT, PO_MONEY, F_INQUIRE, USER_EMAIL
+	</select>
+	
+	<!-- 만든프로젝트 배송완료로 업데이트 시키기 -->
+	<update id="postStateUpdate">
+	  UPDATE TBL_PROGRESS
+	  SET PRO_SHIP='배송완료' ,PRO_FINISH = SYSDATE
+	  WHERE  PRO_NUM=#{proNum} AND  FINAL_NUM IS NOT NULL AND PRO_STA ='성공'
+	</update>
+
+	
+	<!-- 창작자 페이지 만든 프로젝트 개수(진행, 성공 프로젝트만 출력) -->
+	<select id="makerCount" resultType="java.lang.Integer">
+		SELECT COUNT(DISTINCT(PRJ_TITLE))
+		FROM VIEW_ALL6
+		WHERE FINAL_NUM IS NOT NULL AND USER_NUM=#{userNum} AND (PRO_STA = '진행중' OR PRO_STA = '성공')
+   </select>
+	
+
+</mapper>

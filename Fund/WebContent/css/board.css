@@ -1,0 +1,209 @@
+@charset "UTF-8";
+
+
+.blank
+{
+	margin-bottom: 100px;
+}
+
+.line2 
+{ 
+	margin: 0  auto;
+	color: blue; 
+	size: 30; 
+	width: 55%;
+	background-color: #ffc425;
+	height: 2px;
+}
+
+hr
+{
+	height: 2px;
+	background-color: #ffc425;
+	margin-bottom: 50px;
+	width: 65%;
+	margin: 0 auto;
+}
+
+#myInput {
+  background-image: url('/css/searchicon.png');
+  background-position: 10px 10px;
+  background-repeat: no-repeat;
+  width: 100%;
+  font-size: 16px;
+  padding: 12px 20px 12px 40px;
+  border: 1px solid #ddd;
+  margin-bottom: 12px;
+}
+
+/* 공지사항 목록 */
+.divTable{
+	display: table;
+	width: 45%;
+	margin: 0 auto;
+	color: black;
+	text-align: center;
+}
+.divTableRow {
+	display: table-row;
+	text-align: center;
+	border: 1px solid #999999;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border: 1px solid #999999;
+	display: table-cell;
+	padding: 3px 10px;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+
+/* 글번호 스타일 */
+.divTableNum
+{
+	border: 1px solid #cecece;
+	border-left:0px;
+	border-right:0px;
+	display: table-cell;
+	padding: 3px 10px;
+	width: 10%;
+}
+
+/* 제목 스타일 */
+.divTableTitle
+{
+	border: 1px solid #cecece;
+	border-left:0px;
+	border-right:0px;
+	display: table-cell;
+	padding: 3px 10px;
+	width: 45%;
+	text-align: left;
+}
+
+/* 작성일 스타일 */
+.divTableDate
+{
+	border: 1px solid #cecece;
+	border-left:0px;
+	border-right:0px;
+	display: table-cell;
+	padding: 3px 10px;
+	width: 15%;
+}
+
+/* 목록들 사이 공간 만들어 주는 코드 */
+.divTableRow div
+{
+	padding-top: 25px;
+	padding-bottom: 25px;
+}
+
+
+/* 공지사항 제목 */
+.title
+{margin: 0 auto; text-align: center; width:100%; color: black;}
+
+
+/* 페이지네이션 */
+.navi
+{
+	text-align: center;
+	margin-top: 30px;
+}
+
+/* 검색창 */
+* {
+  box-sizing: border-box;
+}
+
+form.example input[type=text] {
+  padding: 10px;
+  font-size: 15px;
+  float: left;
+  width: 75%;
+  background: #f1f1f1;
+  margin-top: 50px;
+  height: 42px;
+}
+
+form.example button {
+  float: left;
+  width: 20%;
+  padding: 9px;
+  background: #ffc425;
+  color: white;
+  font-size: 15px;
+  border: 1px solid #ffc425;
+  border-left: none;
+  cursor: pointer;
+  margin-top: 50px;
+}
+
+form.example button:hover {
+  background: gray;
+}
+
+form.example::after {
+  content: "";
+  clear: both;
+  display: table;
+}
+
+
+/* 반응형 코드 */
+@media screen and (max-width: 1200px) {
+  .topnav .search-container {
+    float: none;
+  }
+  .topnav a, .topnav input[type=text], .topnav .search-container button {
+    float: none;
+    display: block;
+    text-align: left;
+    width: 100%;
+    margin: 0;
+    padding: 14px;
+  }
+  .topnav input[type=text] {
+    border: 1px solid #ccc;  
+  }
+  .divTable
+  {
+  	width:70%;
+  }
+}
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+

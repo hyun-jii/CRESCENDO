@@ -1,0 +1,223 @@
+<<<<<<< HEAD
+@charset "UTF-8";
+.myPage
+{
+   height: 1500px;
+}
+.mypage_image
+{
+   background-color: #dcdcdc;
+   height: 350px;
+   width: 100%;
+   margin: 0 auto;
+}
+.mypage_liketext
+{
+   text-align: center;
+   margin-top: 20px;
+   font-weight: bold;
+   font-size: 25px;
+   color: black;
+}
+.zzim{margin:0 auto; text-align: center;}
+
+.item 
+{
+    height: 40%;
+    width: 25%;
+    float: left;
+    margin-left: 20px;
+}
+.product-grid
+{
+   margin-top: 50px;
+   height: 100%;
+
+}
+.fa-star
+{
+   font-size: 20px;
+   text-align: right;
+   margin-top: 15px;
+}
+.fa-star:hover
+{
+   color: orange;
+   
+}
+
+
+@media (max-width:767px)
+{
+   .mypage_image
+   { 
+      width: 70%;   
+      float: left;
+      margin-bottom: 90px;
+   }
+   .all_like
+   {
+         margin-top: -50px;
+         float:left;
+         width:30%;
+   }
+   .item
+   {   
+       margin-bottom: 50px;
+   }
+}
+
+@media (max-width:992px)
+{
+   .all_like
+   {
+   
+         float:left;
+         width:50%;
+   }
+   .item
+    {
+       margin-bottom: 50px;
+       width: 50%;
+   }
+}
+
+@media (max-width:1000px)
+{
+   .item
+    {
+    
+       margin-bottom: 50px;
+   }
+}
+
+=======
+@charset "UTF-8";
+.all_like
+{
+	text-align: center;
+}
+.myPage
+{
+	height: 1500px;
+}
+.mypage_image
+{
+   background-color: #dcdcdc;
+   height: 350px;
+   width: 100%;
+   margin: 0 auto;
+}
+.mypage_liketext
+{
+   text-align: center;
+   margin-top: 20px;
+   font-weight: bold;
+   font-size: 25px;
+   color: black;
+}
+.zzim{margin:0 auto; text-align: center;}
+
+.item 
+{
+    height: 40%;
+    width: 31%;
+    float: left;
+    margin-left: 20px;
+}
+.product-grid
+{
+   margin-top: 50px;
+   height: 100%;
+
+}
+.fa-star
+{
+   font-size: 20px;
+   text-align: right;
+   margin-top: 15px;
+}
+.fa-star:hover
+{
+   color: orange;
+   
+}
+.pagination
+{
+
+	font-size:17px;
+	margin-left: 50px;
+
+	
+}
+.pagination a {
+  color: black;
+  float: left;
+  padding: 2px 8px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: orange;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+@media (max-width:767px)
+{
+	
+	
+	.mypage_image
+	{ 
+		width: 134%;	
+		float: left;
+		margin-bottom: 30px;
+	}
+   .all_like
+   {
+   		margin-top: -50px;
+   		float:left;
+   		width:30%;
+   }
+   .item
+   {   
+    	margin-bottom: 50px;
+    	width: 100%;
+   }
+   .pagination
+   {
+   		width: 130%;
+   }
+}
+
+@media (max-width:992px)
+{
+   .all_like
+   {
+   
+   		float:left;
+   		width:50%;
+
+   }
+   .item
+    {
+    	margin-bottom: 20px;
+    	width: 120%;
+	}
+}
+
+@media (max-width:1000px)
+{
+   .item
+    {
+    
+    	margin-bottom: 20px;
+	}
+}
+
+.pagParent{width:20%;}
+
+

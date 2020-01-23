@@ -1,0 +1,52 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<mapper namespace="com.crescendo.spring.user.model.dao.support.ISupportDAO">
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+   <!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+   <!--  type은 VO명 id아무거나  -->
+   <!--  property = vo안에 속성이름 -->
+   <!--  resultMap type안에 NoticeVO는 config.xml파일에서 설정해준 값 사용 -->
+   <resultMap type="SupportVO" id="supportResultSet">
+      <id column="F_DATE" property="fDate"/>
+	  <result column="PRJ_TITLE" property="prjTitle" />
+	  <result column="F_NUM" property="fNum" />
+	  <result column="RE_CONTENT" property="reContent" />
+      <result column="RE_NUM" property="reNum"/>
+      <result column="PO_MONEY" property="poMoney"/>
+      <result column="USER_NUM" property="userNum"/>
+      <result column="USER_NAME" property="userName"/>
+      <result column="F_COUNT" property="fCount"/>
+      <result column="PO_NUM" property="poNum"/>
+      <result column="PRO_NUM" property="proNum"/>
+      <result column="PO_STA"  property="poSta"/>
+   </resultMap>
+   
+   
+   <!-- 후원프로젝트 출력 -->
+	<select resultType="supportVO" id="supportList">
+		 SELECT PO_NUM, F_DATE , PRJ_TITLE, F_NUM, RE_CONTENT,RE_NUM, PO_MONEY, USER_NUM, USER_NAME, F_COUNT, PO_NUM, PRO_NUM, PO_STA
+		 FROM VIEW_ALL6
+		 WHERE  USER_NAME =#{userName} AND PO_NUM IS NOT NULL AND PRO_NUM IS NOT NULL
+		 GROUP BY PO_NUM,  F_DATE , PRJ_TITLE, F_NUM, RE_CONTENT,RE_NUM, PO_MONEY, USER_NUM, USER_NAME, F_COUNT, PO_NUM, PRO_NUM, PO_STA
+	     ORDER BY F_NUM
+    </select>
+	
+	<!-- 후원프로젝트 개수 출력 -->
+	<select id="supportCount" resultType="java.lang.Integer">
+		SELECT COUNT(DISTINCT(F_NUM))
+		FROM VIEW_ALL6
+	    WHERE  USER_NAME = #{userName} AND PO_NUM IS NOT NULL AND PRO_NUM IS NOT NULL
+	</select>
+	
+		
+	<!--결제취소할때 리워드 개수 증가 -->
+	<update id="increaseCount">
+	  UPDATE TBL_REWARD
+	  SET RE_LIMIT = RE_LIMIT + #{fCount} 
+	  WHERE RE_NUM=#{reNum}
+	</update>
+	
+	
+</mapper>

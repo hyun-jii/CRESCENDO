@@ -1,0 +1,57 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<mapper namespace="com.crescendo.spring.user.model.dao.project.step4.IStep4DAO">
+
+
+   
+   <resultMap type="Step4VO" id="step4ResultSet">
+      <id column="MA_NUM" property="maNum"/>
+      <result column="PRJ_NUM" property="prjNum"/>
+      <result column="MA_NAME" property="maName"/>
+      <result column="MA_INFO" property="maInfo"/>
+      <result column="MA_ACNAME" property="maAcname"/>
+      <result column="MA_BANK" property="maBank"/>
+      <result column="MA_ACCOUNT" property="maAccount"/>
+      <result column="MA_DATE" property="maDate"/>
+      <result column="MA_PERIOD" property="maPeriod"/>
+      <result column="MA_PREDICT" property="maPredict"/>  
+   </resultMap>
+   
+   <insert id="insertMaker">
+   	INSERT INTO TBL_MAKER(MA_NUM,PRJ_NUM,MA_NAME,MA_INFO,MA_ACNAME,MA_BANK,MA_ACCOUNT,MA_DATE,MA_PERIOD,MA_PREDICT) VALUES (SEQ_MAKER.NEXTVAL,#{prjNum},#{maName},#{maInfo},#{maAcname},#{maBank},#{maAccount},TO_CHAR(SYSDATE,'YYYY-MM-DD'),#{maPeriod},#{maPredict})
+   </insert>
+   
+	<!--  프로젝트에 대한 내용들 조건검사 -->
+	
+   <select id="checkform" resultType="ProjectPageVO">
+	SELECT PRJ_TITLE,PRJ_SNAME,PRJ_GOAL
+	FROM VIEW_USER_STEP3
+	WHERE PRJ_NUM=#{prjNum}
+	GROUP BY PRJ_TITLE,PRJ_SNAME,PRJ_GOAL
+   </select>
+   
+	
+	<!--  maNum값을 가져오기 위한 작업 -->
+	<select id="step4get" resultType="Step4VO">
+		SELECT *
+		FROM   TBL_MAKER
+		WHERE  PRJ_NUM =#{prjNum}
+	</select>
+   
+   
+   <!--  APP평가 조건 불충족 insert -->
+   <insert id="appinsert">
+    INSERT INTO TBL_APP(APP_NUM,MA_NUM,EVA_NUM)
+	VALUES(SEQ_APP.NEXTVAL,#{maNum},2)
+	</insert>
+	
+	<!-- APP평가 조건 만족 insert -->
+	<insert id="sappinsert">
+	INSERT INTO TBL_APP(APP_NUM,MA_NUM,EVA_NUM)
+	VALUES(SEQ_APP.NEXTVAL,#{maNum},1)
+	</insert>
+	
+   
+</mapper>

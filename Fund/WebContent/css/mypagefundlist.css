@@ -1,0 +1,259 @@
+@charset "UTF-8";
+.col-xs-8
+{
+	padding-left: -10px;
+}
+.all_like
+{
+	text-align: center;
+}
+* {box-sizing: border-box;}
+
+body {
+  margin: 0;
+  font-family: Arial, Helvetica, sans-serif;
+}
+.per_list
+{
+	text-align: left;
+	margin-top:10px;
+	margin-left: 10px;
+}
+.myPage
+{
+	height: 1500px;
+}
+.mypage_image
+{
+   height: 350px;
+   width: 100%;
+   margin: 0 auto;
+   border: 1px solid;
+   text-align: center;
+}
+.mypage_Fundlist
+{
+	font-size: 25px;
+	color: black;
+	font-weight: bold;
+}
+.personSum
+{
+	color: black;
+	font-weight: bold;
+	font-size: 20px;
+	text-align: left;
+	height: 55px;
+	overflow: hidden;
+    background-color: #e9e9e9;
+}
+.per_num_div
+{
+	margin-top:10px;
+	text-align: center;
+	padding: 2px;
+	font-size: 18px;
+}
+
+.per_num
+{
+	color: orange;
+	font-weight: bold;
+	
+}
+.fund_list
+{
+	width: 100%;
+	border: 1px solid;
+	
+}
+table,th,td
+{
+	margin-top:20px;
+	border: 1px solid;
+	text-align: center;
+}
+th
+{
+	color: black;	
+	background-color: #e9e9e9;
+	font-size: 15px;
+}
+td
+{
+	height: 30px;
+}
+tr
+{
+	height: 20px;
+}
+
+
+
+
+
+.search-container 
+{
+	margin-top: -30px;
+  	float: right;
+ 
+}
+
+
+.personSum input[type=text] {
+  padding: 6px;
+  font-size: 17px;
+  border: none;
+}
+
+.personSum .search-container button {
+  float: right;
+  width: 20%;
+  background: #ddd;
+  font-size: 17px;
+  border: none;
+  cursor: pointer;
+}
+.search-container button
+{
+   	margin-top: -37px;
+ 	height: 39px;
+}
+
+.personSum .search-container button:hover {
+  background: #ccc;
+}
+.list_text
+{
+	margin-top: 10px;
+	margin-left: 15px;
+}
+
+
+
+.zzim{margin:0 auto; text-align: center;}
+.send_letter_btn
+{
+	text-align: right;
+}
+.send_letter {
+  border-radius: 4px;
+  background-color: orange;
+  border: none;
+  color: #FFFFFF;
+  font-size: 17px;
+  font-weight: bold;
+  padding: 10px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.send_letter span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.send_letter span:after {
+
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.send_letter:hover span {
+  padding-right: 25px;
+}
+
+.fundstart:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 8px 7px;
+  text-decoration: none;
+  transition: background-color .3s;
+  font-size: 17px;
+}
+
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+@media (max-width:767px)
+{
+	.mypage_image,.per_num_div
+	{ 
+		width: 100%;	
+		float: left;
+		margin-bottom: 30px;
+	}
+	.per_list
+	{
+		display: none;
+	}
+	.per_num_div
+	{
+		width: 100%;
+	}
+
+   .fund_list
+   {
+   		float: left;
+   }
+   .mypage_Fundlist
+   {   
+    	width: 100%;	
+		margin-bottom: 90px;
+   }
+   .personSum
+   {
+  		margin-top: -30px;
+   		float: left;
+    	width: 100%;
+   }
+
+   .search-container
+   {
+   		width:100%;
+   		float: left;
+   		margin-top: 10px;
+   		margin-left: 5px;
+   }
+   
+   .pagination
+   {
+   		
+   		width: 100%;
+   		font-size: 15px;
+   	
+   }
+   
+   .send_letter_btn
+   {
+   		width: 70%;
+   		float: left;
+   		margin-right: 30px;
+   	
+   }
+	
+
+
+
+
+
+
+
+

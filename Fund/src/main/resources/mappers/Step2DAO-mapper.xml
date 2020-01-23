@@ -1,0 +1,49 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<mapper namespace="com.crescendo.spring.user.model.dao.project.step2.IStep2DAO">
+
+
+   
+   <resultMap type="Step2VO" id="step2ResultSet">
+      <id column="PRJ_NUM" property="prjNum"/>
+      <result column="CA_NUM" property="caNum"/>
+      <result column="USER_NUM" property="userNum"/>
+      <result column="PRJ_TITLE" property="prjTitle"/>
+      <result column="PRJ_SNAME" property="prjSname"/>
+      <result column="PRJ_GOAL" property="prjGoal"/>
+      <result column="PRJ_IMG" property="prjImg"/>
+      <result column="PRJ_TAG" property="prjTag"/>
+      <result column="PRJ_CONTENT" property="prjContent"/>
+      <result column="PRJ_DATE" property="prjDate"/>
+   </resultMap>
+  
+   <!-- 프로젝트 step2insert 부분 -->
+   <insert id="extraProject" parameterType="Step2VO" > 
+         INSERT INTO TBL_PROJECT(PRJ_NUM, CA_NUM, USER_NUM, PRJ_TITLE, PRJ_SNAME, PRJ_GOAL, PRJ_IMG, PRJ_TAG, PRJ_CONTENT, PRJ_DATE)
+         VALUES(SEQ_PROJECT.NEXTVAL, #{caNum}, #{userNum}, #{prjTitle}, #{prjSname}, #{prjGoal}, #{prjImg}, #{prjTag}, #{prjContent}, TO_CHAR(SYSDATE,'YYYY-MM-DD'))
+         <selectKey keyProperty="prjNum" resultType="int" order="AFTER">
+	  	 	SELECT SEQ_PROJECT.CURRVAL FROM DUAL
+	   	 </selectKey>       
+   </insert>
+   
+   <!-- 뒤로가기 눌렀을 경우 데이터 뿌리기 -->
+   <select id="backStep2" resultType="Step2VO">
+   		SELECT PRJ_NUM, CA_NUM, USER_NUM, PRJ_TITLE,PRJ_SNAME,PRJ_GOAL,PRJ_IMG,PRJ_TAG,PRJ_CONTENT,PRJ_DATE
+		FROM TBL_PROJECT
+		WHERE PRJ_NUM = #{prjNum} 
+   </select>
+   
+   <update id="updateUpload">
+   		UPDATE TBL_PROJECT
+   		SET CA_NUM = #{caNum}, PRJ_TITLE =#{prjTitle}, PRJ_SNAME=#{prjSname}, PRJ_GOAL=#{prjGoal}, PRJ_IMG=#{prjImg}
+   		             , PRJ_TAG=#{prjTag}, PRJ_CONTENT=#{prjContent}, PRJ_DATE=TO_CHAR(SYSDATE,'YYYY-MM-DD')
+   		WHERE PRJ_NUM = #{prjNum}
+   </update>
+   
+
+
+	
+   
+ </mapper>

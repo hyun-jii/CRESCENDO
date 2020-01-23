@@ -1,0 +1,326 @@
+@charset "UTF-8";
+/* 부트스트랩 css  */
+.row
+{
+    margin-right: -10px;
+    margin-left: -10px;
+}
+
+/* style.css */
+
+.header-top
+{
+   font-size: 14px;
+   color: #666; 
+   font-weight: 500;
+}
+
+.navbar-brand {
+    font-size: 24px;
+    font-weight: bold;
+    color: #ffc425;
+    display: inline-block;
+    float: none;
+}
+
+/* ----------------------------------------------
+		HEADER
+	2.1 Header
+----------------------------------------------- */
+
+
+/* ===== Header top Style ===== */
+
+.header-top {
+    font-size: 14px;
+    /* color: #666; */
+    /* font-weight: 500; */
+}
+.header-top a {
+    color: #666;
+}
+.header-top-left, .header-top-right {
+   
+}
+.header-top-left li, .header-top-right li {
+    display: inline;
+    cursor: pointer;
+}
+.header-top-left>li, .header-top-right>li {
+    padding: 0 10px;
+   
+}
+
+.header-top-right>li:last-child {
+    padding: 0 0 0 20px;
+}
+
+.header-top-left .contact {
+    text-transform: uppercase;
+}
+.header-top-left .contact>a {
+    color: #fa4251;
+    font-size: 16px;
+    font-weight: 500;
+}
+.header-top-left .contact>a:hover,
+.header-top-left .contact>a:focus {
+    color: #ccc;
+}
+.header-top-left .contact span {
+    color: #ccc;
+    padding-left: 5px;
+}
+
+
+.header-top-left .contact>a::before {
+    content: "\f025";
+    font-family: SpoqaHanSans-Regular, SpoqaHanSans-Light, SpoqaHanSans-Bold;
+    font-size: 18px;
+    padding-right: 9px;
+    vertical-align: -1px;
+}
+
+/* ----------------------------------------------
+	2.2 Navbar
+----------------------------------------------- */
+
+.navbar {
+    border-radius: 0;
+    border: 0;
+    margin: 0;
+    background: #424242;
+}
+.navbar-header {
+    text-align: center;
+}
+.navbar-brand {
+	font-size:24px;
+	font-weight:bold;
+	color:#ffc425;
+	/* display: inline-block; */
+	/* float: none; */
+}
+.navbar > p {
+    float: left;
+    font-size: 16px;
+    font-weight: 600;
+    margin-top: 12px;
+    text-transform: uppercase;
+    display: none;
+}
+.navbar-header .navbar-brand {
+    height: auto;
+}
+.header.navbar, #category-menu.navbar {
+    margin-bottom: 0;
+    border-radius: 0;
+}
+/* ----------------------------------------------
+	4.1 jieun
+----------------------------------------------- */
+.search{}
+.hamburger{color:orange}
+.caList{font-size:18px; font-weight:bold; margin-top:25px;}
+.caList a{padding:10px; text-decoration:none; color:#333;}
+.caList a:hover{text-decoration:none; color:#666; }
+.ca{font-size:14px; color:#999; margin-left:10px; margin-bottom:20px; font-weight:bold;}
+.w3-button:hover{background-color: #fff!important}
+.catitle{font-size:19px; font-weight:bold; color:#333}
+.catitles{font-size:14px; color:#666}
+.contitle{text-align:center; font-size:15px; font-weight:bold; color:#4D4D4D; margin:0 auto;font-family:SpoqaHanSans-Regular, SpoqaHanSans-Light, SpoqaHanSans-Bold;}
+
+.contitle2{text-align:center; font-size:30px; color:#333333; margin:0 auto; font-weight:bold; font-family:SpoqaHanSans-Regular, SpoqaHanSans-Light, SpoqaHanSans-Bold;}
+.white-border
+{   
+	width: 25px;
+    height: 2px;
+    border-radius: 2px;
+    background-color: #fff;
+	float:left;
+}
+.whiteor{float:left; margin:-10px 10px; color:#4d4d4d; font-weight:bold;}
+.ss
+{
+	text-align:center; 
+	font-weight:bold; 
+	color:#4d4d4d; 
+	border-bottom: 1px solid #4d4d4d; 
+	width:130px; 
+	font-family:SpoqaHanSans-Regular;
+	margin-top:30px;
+}
+.border{float:left;}
+.c{margin-left:8px;}
+#sideparent{max-width: 1200px;}
+.w3-bar-bloc
+{
+	display: none; background-color: #ffff; width: 300px;
+}
+.footer-1
+{
+	background-image:url("../images/brand/footer.jpg");
+	background-size:cover;
+	background-repeat:no-repeat;
+}
+.this
+{
+	background-image:url("../images/main/main.jpg");
+    background-size:cover;
+	background-repeat:no-repeat;
+	border-bottom:2px solid #ffc425
+}
+.foo1{float:left; font-size: 11px;}
+.foo2{float:right; font-size: 11px;}
+
+/*========step1 css */
+.cc{width:17px; height: 17px; border-radius: 3px; vertical-align: text-bottom;
+margin-right:10px;}
+.c1{ background: #fff; margin-bottom:9px; font-size: 15px; color:#666; font-weight: bold;}
+.b1{border: none; background-color:#ffc425; color:#fff; width:90px; height:45px;
+      border-radius: 0.28571429rem; font-size: 13px; font-weight: bold}
+.b1:focus {outline: none; cursor: pointer;}
+.b1:hover {background-color: orange;}
+.maketitle{border-bottom: 1px solid #eeeeee; padding-bottom:13px; color:#666;
+font-size: 24px; font-weight: bold; margin-top:35px;}
+.promise_box{width:800px; height:550px;margin:0 auto; padding-right:20px}
+.pro_innerbox{width:700px; height:450px;margin:150px auto;}
+.maket1{font-size: 14px; font-weight:normal; padding-top:15px;}
+/*====step2 css======*/
+pro_container{margin:0 auto; width:1000px; }
+start_pro{width:90%; margin:0 auto; height:700px; height:1400px;}
+.float_left{float:left;}
+.basic-info
+{
+	padding-top: 10px;
+	background-color: #ffc425;
+	color: white;
+	height:40px;
+	font-weight: bold;
+	padding-left:10px;
+	margin-top: 70px;
+}
+
+/* step 1 기본정보 입력하기 */
+.step1
+{
+	border: 1px solid #dddd;
+	height: 100px;
+	padding-top:10px;
+	padding-left:10px;
+	margin-bottom: 25px;
+}
+
+.step-1
+{
+	color: orange;
+	font-weight: bold;
+	font-size: 20px;
+	margin-right: 10px;
+	margin-top:50px;
+}
+
+.step-2
+{
+	font-weight: bold;
+	font-size: 15px;
+
+}
+
+.step-3
+{
+	padding-left: 105px;
+}
+
+.step-4
+{
+	padding-left: 105px;
+}
+
+
+
+/*========step3======*/
+/* DivTable.com */
+.divTable{
+	display: table;
+	width: 100%;
+ 
+}
+.divTableRow {
+	display: table-row;
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+}
+.divTableCell, .divTableHead {
+	border-top: 1px solid #dddd;
+	border-bottom: 1px solid #dddd;
+	border-width:thin;
+	display: table-cell;
+	padding: 3px 10px;
+	text-align: center;
+	font-weight: bold;
+	color:#666;
+  
+}
+.divTableHeading {
+	background-color: #EEE;
+	display: table-header-group;
+	font-weight: bold;
+}
+.divTableFoot {
+	background-color: #EEE;
+	display: table-footer-group;
+	font-weight: bold;
+}
+.divTableBody {
+	display: table-row-group;
+}
+.start_pro2{height:600px; margin-top:70px;}
+#openmodal{float:right; background-color:#ffc425; color:#fff; border: none; height:28px; margin-left:10px; margin-top: 15px;
+border-radius:3px; width:110px; height:30px;}
+#openmodal:hover{background:orange; transition:1s;}
+#openmodal:focus{outline: none;}
+#deletebutton{background-color:#666; color:#fff; border: none; float:right; width:110px; height:30px; margin-top: 15px;
+border-radius:3px;}
+#deletebutton:hover{background:#333; transition:1s;}
+#deletebutton:focus{outline: none;}
+.buttons{height:100px; margin:0 auto; width:100%}
+#canclebutton{background-color:#666; color:#fff; border: none;  width:105px; height:28px;}
+#canclebutton:focus{outline: none;}
+#savebutton{background-color:#ffc425; color:#fff; border: none; height:28px; margin-left:10px; width:105px; height:28px;}
+#savebutton:focus{outline: none;}
+#nextbutton{background-color:orange; color:#fff; border: none; height:28px; margin-left:10px; width:105px; height:28px;}
+#nextbutton:focus{outline: none;}
+#sendbutton{background-color:#ff7f50; color:#fff; border: none; height:28px; margin-left:10px; width:105px; height:28px;}
+#sendbutton:focus{outline: none;}
+.buttonparent{margin:0 auto; width:380px; height:50px;}
+.buttonparent2{margin:10px auto; width:130px; height:50px; padding-top: 10px; }
+.modalcontent
+{position: absolute; top: 280px; left: 440px; height: 410px; padding-top:30px; padding-left:15px;
+    width: 1000px; border:1px solid #cccccc; border-radius:3px; background-color:#fff; z-index: 9999;}
+    
+    
+    
+ /*========step4======*/  
+.making1{width:200px; margin-left: 10px; color:#666;}
+.making2{width:200px; margin-left: 10px; color:#666; vertical-align: top;}
+.making3{width:200px;  color:#666; }
+.making5{width:100px; color:#666;}
+.making6{width:100px; color:#666; vertical-align: top;}
+.making7{width:205px; float:left; color:#666; margin-left: 10px; font-size: 12px; margin-top:8px; }
+.words{font-size: 12px; color:red; margin-left: 215px;}
+
+
+/*========stepend======*/
+.proend2{text-align: center; color:#666; font-weight: bold; font-size: 20px; margin-top: 25px;}
+.fa-check-circle{font-size: 60px; color:#ff7f50;}
+.proend{width:300px; text-align: center; margin:0 auto; margin-top:70px;}
+#lookbutton{width:80px; height:30px; background-color: orange; border-radius:3px; font-weight: bold; border: none; color:#fff}
+>>>>>>> branch 'master' of https://github.com/hyun-jii/Funding.git
+#lookbutton:focus{outline: none;}
+
+.w3-tel{
+	background-color:#fff; max-width:1200px; margin: 0 auto;
+}

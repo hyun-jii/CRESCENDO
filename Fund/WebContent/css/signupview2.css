@@ -1,0 +1,90 @@
+<<<<<<< HEAD
+@charset "UTF-8";
+#insert-table {
+    
+    border-spacing: 10px;
+    border-collapse: separate;
+    margin-left:29% !important;
+    padding: auto;
+}
+
+
+#insertbtn2{
+	
+	margin-top:30px;
+    
+	
+}
+#insertbtn {
+   
+    color: #fff;
+    font-weight: 900;
+}
+
+#insertbtn:hover{
+    background-color: #F39C12;
+}
+#emailauthbtn:hover{
+    background-color: #F39C12;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+	color: #fff;
+	border-color: #8E44AD;
+	background-color: #8E44AD;
+}
+#joinFormOuter ::placeholder {
+  font-size: 13px;
+}
+
+/* 커스텀 체크박스 색 변경하는 CSS */
+#joinFormOuter .custom-control-input:checked~.custom-control-label::before {
+	color: #fff;
+	border-color: #8E44AD;
+	background-color: #8E44AD;
+=======
+@charset "UTF-8";
+#insert-table {
+    
+    border-spacing: 10px;
+    border-collapse: separate;
+    margin-left:29% !important;
+    padding: auto;
+}
+
+
+#insertbtn2{
+	
+	margin-top:30px;
+    
+	
+}
+#insertbtn {
+   
+    color: #fff;
+    font-weight: 900;
+}
+
+#insertbtn:hover{
+    background-color: #F39C12;
+}
+#emailauthbtn:hover{
+    background-color: #F39C12;
+}
+
+.custom-control-input:checked~.custom-control-label::before {
+	color: #fff;
+	border-color: #8E44AD;
+	background-color: #8E44AD;
+}
+#joinFormOuter ::placeholder {
+  font-size: 13px;
+}
+
+/* 커스텀 체크박스 색 변경하는 CSS */
+#joinFormOuter .custom-control-input:checked~.custom-control-label::before {
+	color: #fff;
+	border-color: #8E44AD;
+	background-color: #8E44AD;
+>>>>>>> branch 'master' of https://github.com/hyun-jii/Funding.git
+}

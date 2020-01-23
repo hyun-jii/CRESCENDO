@@ -1,0 +1,101 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.crescendo.spring.user.model.dao.projectpage.detail.IProjectDetailDAO">
+
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+	<!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+	<!--  type은 VO명 id아무거나  -->
+	<!--  property = vo안에 속성이름 -->
+	<!--  resultMap type은 config.xml파일에서 설정해준 값 사용 -->
+	<resultMap type="ProjectPageVO" id="projectPageResultSet">
+		<id column="USER_NUM" property="userNum"/>
+		<result column="USER_NAME" property=" userName"/>
+		<result column="USER_EMAIL" property="userEmail"/>
+		<result column="F_NUM" property="fNum"/>
+		<result column="RE_NUM" property="reNum"/>
+		<result column="F_NAME" property="fName"/>
+		<result column="F_ADDR" property="fAddr"/>
+		<result column="F_TEL" property="fTel"/>
+		<result column="F_INQUIRE" property="fInquire"/>
+		<result column="F_COUNT" property="fCount"/>
+		<result column="PR_NUM" property="prNum"/>
+		<result column="PR_CARD" property="prCard"/>
+		<result column="PR_BIRTH" property="prBirth"/>
+		<result column="PR_PW" property="prPw"/>
+		<result column="PR_EXPIRE" property="prExpire"/>
+		<result column="PR_DATE" property="prDate"/>
+		<result column="PR_KEY" property="prKey"/>
+		<result column="PO_NUM" property="poNum"/>
+		<result column="PO_DATE" property="poDate"/>
+		<result column="PO_STA" property="poSta"/>
+		<result column="PO_MONEY" property="poMoney"/>
+		<result column="CA_NUM" property="caNum"/>
+		<result column="CA_NAME" property="caName"/>
+		<result column="PRJ_NUM" property="prjNum"/>
+		<result column="PRJ_TITLE" property="prjTitle"/>
+		<result column="PRJ_SNAME" property="prjSname"/>
+		<result column="PRJ_GOAL" property="prjGoal"/>
+		<result column="PRJ_IMG" property="prjImg"/>
+		<result column="PRJ_TAG" property="prjTag"/>
+		<result column="PRJ_CONTENT" property="prjContent"/>
+		<result column="RE_NAME" property="reName"/>
+		<result column="RE_CONTENT" property="reContent"/>
+		<result column="RE_MONEY" property="reMoney"/>
+		<result column="RE_LIMIT" property="reLimit"/>
+		<result column="MA_NUM" property="maNum"/>
+		<result column="MA_NAME" property="maName"/>
+		<result column="MA_INFO" property="maInfo"/>
+		<result column="MA_PERIOD" property="maPeriod"/>
+		<result column="MA_PREDICT" property="maPredict"/>
+		<result column="FINAL_NUM" property="finalNum"/>
+		<result column="FINAL_STA" property="finalSta"/>
+		<result column="FINAL_DATE" property="finalDate"/>
+		<result column="PRO_NUM" property="proNum"/>
+		<result column="PRO_STA" property="proSta"/>
+		<result column="PRO_SHIP" property="proShip"/>
+		<result column="PRO_FINISH" property="proFinish"/>
+		<result column="REMAIN_DAY" property="remainDay"/>
+		<result column="FINAL_DAY" property="finalDay"/>
+		<result column="PERCENT" property="percent"/>
+		<result column="TOTAL_MONEY" property="totalMoney"/>
+		<result column="SUPPORTER" property="supporter"/>
+		<result column="APP_NUM" property="appNum"/>
+	</resultMap>
+	
+	<!-- 프로젝트 세부 페이지 내용 -->
+	<select id="projectDetail" resultType="ProjectPageVO">
+		SELECT PRJ_TITLE, PRJ_CONTENT, PRJ_SNAME, PRJ_TAG, PRJ_IMG, PRJ_GOAL,MA_NAME, MA_INFO, REMAIN_DAY, MA_PREDICT, PERCENT, TOTAL_MONEY, SUPPORTER, PRO_STA, FINAL_DATE, PRO_NUM, USER_NUM
+		FROM VIEW_ALL6
+		WHERE PRO_NUM = #{proNum}
+		GROUP BY PRO_NUM, PRJ_TITLE, PRJ_CONTENT, PRJ_SNAME, PRJ_TAG, PRJ_IMG, PRJ_GOAL, MA_NAME, MA_INFO, REMAIN_DAY, MA_PREDICT, PERCENT, TOTAL_MONEY, SUPPORTER, PRO_STA, FINAL_DATE, USER_NUM
+	</select>
+	
+	<select id="projectDetail2" resultType="ProjectPageVO" >
+		SELECT APP_NUM, USER_NUM, PRJ_TITLE, PRJ_CONTENT, PRJ_SNAME, PRJ_TAG, PRJ_IMG, PRJ_GOAL, MA_NAME, MA_INFO, MA_PREDICT, MA_PERIOD
+		FROM VIEW_PRJ_APP
+		WHERE APP_NUM = #{appNum}
+		GROUP BY APP_NUM, USER_NUM, PRJ_TITLE, PRJ_CONTENT, PRJ_SNAME, PRJ_TAG, PRJ_IMG, PRJ_GOAL, MA_NAME, MA_INFO, MA_PREDICT, MA_PERIOD
+	</select>
+	
+	<!-- 후원하기 리워드 구성(초롱) -->
+	<select id="fundList" resultType="ProjectPageVO">
+		SELECT PRO_NUM, RE_NUM, RE_NAME, RE_MONEY, RE_CONTENT, RE_LIMIT, MA_PREDICT, PRO_STA, PRJ_NUM, PRJ_TITLE
+		FROM VIEW_ALL6
+		WHERE PRO_NUM = #{proNum} AND PRO_STA = '진행중'
+		GROUP BY PRO_NUM, RE_NUM, RE_NAME, RE_MONEY,RE_CONTENT, RE_LIMIT, MA_PREDICT, PRO_STA,PRJ_NUM,PRJ_TITLE
+	</select>
+	
+
+
+	
+	<!-- 결제입력창 후원자가 선택한 리워드 구성 (초롱)-->
+	<select id="rewardList" resultType="ProjectPageVO">
+		SELECT PRO_NUM, RE_NUM, USER_NUM, RE_NAME, RE_CONTENT, RE_LIMIT, RE_MONEY
+		FROM VIEW_ALL6
+		WHERE PRO_NUM = #{proNum} AND PRO_STA = '진행중' AND RE_NUM = #{reNum}
+		GROUP BY PRO_NUM, RE_NUM, USER_NUM, RE_NAME, RE_CONTENT, RE_LIMIT, RE_MONEY
+	</select>
+	
+
+</mapper>

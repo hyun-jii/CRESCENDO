@@ -1,0 +1,72 @@
+@charset "UTF-8";
+
+.main-pw
+{
+  background: #ffffff none repeat scroll 0 0;
+  border-radius: 2px;
+  margin: 10px auto 30px;
+  max-width: 570%;
+  padding: 50px 70px 70px 70px;
+}
+
+.newPw
+{
+	font-weight: bold;
+	margin-right: 160px;
+	color: black;
+}
+.reInputPw
+{
+	font-weight: bold;
+	margin-right: 200px;
+	color: black;
+}
+
+.login-form  .btn.btn-confirm  
+{
+  background: #ffc425 none repeat scroll 0 0;
+  border-color: #ffc425;
+  color: #ffffff;
+  font-size: 14px;
+  width: 30%;
+  height: 50px;
+  line-height: 50px;
+  padding: 0;
+}
+
+/* 비밀번호 재설정 버튼 */
+.btn-confirm
+{
+	font-weight: bold;
+	font-size: 18px;
+	background-color: #ffc425;
+}
+
+/* 비밀번호 일치하지 않을 때 */
+#pwMsg
+{
+	margin-top: 15px;
+	color: red;
+}
+
+@media screen and (max-width: 500px)
+{
+	.main-pw
+	{
+	  background: #ffffff none repeat scroll 0 0;
+	  border-radius: 2px;
+	  margin: 10px auto 30px;
+	  max-width: 570%;
+	  padding: 0px 0px 0px 0px;
+	}
+	.btn-confirm 
+	{
+		margin-left: 30px;
+	}
+	.panel
+	{
+		margin-left: 30px;
+	}
+}
+
+

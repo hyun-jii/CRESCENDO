@@ -1,0 +1,162 @@
+@charset "UTF-8";
+
+/* 드롭다운 반응형 */
+.porjectMenu>li>a:hover, .porjectMenu>li>a:focus {
+    background-color: #ffc425;
+    color: white;
+    font-weight: bold;
+    font-size: 15px;
+    color: black;
+}
+
+/* 배송 완료 버튼 */
+#finishDelivery
+{
+	background-color: #ffc425;
+	border: none;
+	color: white;
+	height: 30px;
+	width: 100px;
+	font-size: 15px;
+	font-weight: bold;
+	border-radius: 3px;
+	margin-bottom: -100px;
+}
+
+/*승인여부 */
+.projectStatus
+{
+	font-size: 15px;
+}
+
+/* 승인대기 아이콘 */
+.fa-envelope
+{
+	font-size: 25px;
+	color: #ffc425;
+	border: none;
+	background-color: white;
+}
+.fa-envelope:focus
+{
+	outline: none;
+}
+
+/* 체크박스 */
+.makeCheckDiv
+{
+	float: left;
+	height: 30px;
+	width: 30px;
+}
+
+/* 작성일 */
+.makeDate
+{
+	margin-bottom: 30px;
+	margin-left: 150px;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+/* 만든프로젝트 갯수 */
+.makeCount {
+
+	padding-left: 36px;
+	font-size: 18px;
+	float: left;
+	margin-top: 10px;
+}
+
+.totalMake {
+	font-size: 21px;
+	color: #ffc425;
+}
+
+
+/* 배송완료 버튼 */
+.deliveryBtn
+{
+	background-color: #ffc425;
+	font-weight: bold;
+	font-size: 15px;
+	color: #fff;
+	border: none;
+	width: 100px;
+	height: 30px;
+	float: right;
+	margin-right: 30px;
+	border-radius: 3px;
+	margin-top: 50px;
+	margin-left: 100px;
+}
+
+.deliveryBtn:focus 
+{
+	outline: none;
+}
+
+/* 프로젝트 드롭다운 */
+.navbarMake {
+  overflow: hidden;
+  background-color: #ffc425;
+  width: 150px;
+  float: right;
+  margin-top: 10px;
+}
+
+.navbarMake a {
+  float: left;
+  font-size: 16px;
+  color: white;
+  text-align: center;
+  padding: 14px 16px;
+  text-decoration: none;
+}
+
+.dropdownMake {
+  float: left;
+  overflow: hidden;
+}
+
+.dropdownMake .makerBtn {
+  font-size: 16px;  
+  border: none;
+  outline: none;
+  color: white;
+  background-color: inherit;
+  font-family: inherit;
+  margin: 0;
+  height: 30px;
+}
+
+.navbarMake a:hover, .dropdownMake:hover .makerBtn {
+  background-color: #ffc425;
+}
+
+.project-content {
+  display: none;
+  position: absolute;
+  background-color: #f9f9f9;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.2);
+  z-index: 1;
+}
+
+.project-content a {
+  float: none;
+  color: black;
+  padding: 12px 16px;
+  text-decoration: none;
+  display: block;
+  text-align: left;
+}
+
+.project-content a:hover {
+  background-color: #ddd;
+}
+
+.dropdownMake:hover .project-content {
+  display: block;
+
+}

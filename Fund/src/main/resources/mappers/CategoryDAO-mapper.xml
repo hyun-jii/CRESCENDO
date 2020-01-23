@@ -1,0 +1,37 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.crescendo.spring.admin.model.dao.category.ICategoryDAO">
+
+<resultMap type="CategoryVO" id="categoryResultSet">
+      <id column="CA_NUM" property="caNum"/>
+      <result column="ADMIN_NUM" property="adminNum"/>
+      <result column="CA_NAME" property="caName" />
+      <result column="CA_DATE" property="caDate"/>
+</resultMap>
+
+	
+	<!-- 카테고리 리스트 출력 구문 -->
+	<select id="cateList" resultType="CategoryVO">		
+		SELECT CA_NUM,ADMIN_NUM,CA_NAME,CA_DATE
+		FROM TBL_CATEGORY	
+	</select>
+	
+	<!-- 카테고리 이름 수정하는 구문 -->
+	<update id="cateUpdate">
+		UPDATE TBL_CATEGORY
+		SET CA_NAME=#{caName}, CA_DATE=TO_CHAR(SYSDATE,'YYYY-MM-DD')
+		WHERE CA_NUM = #{caNum}
+	</update>
+
+	<!-- 카테고리 수정폼에 데이터 보내는 구문 -->
+	<select id="updateCateForm" resultType="CategoryVO">
+		SELECT CA_NUM,ADMIN_NUM,CA_NAME,CA_DATE
+		FROM TBL_CATEGORY 
+		WHERE CA_NUM = #{caNum}
+	</select>
+	
+	
+	
+	
+</mapper>

@@ -1,0 +1,75 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  namespace는 패키지 경로를 포함한 전체이름을 가진 구문을 구분하기 위해 필수로 사용해야한다.
+	  namespace는 인터페이스 바인딩을 가능하게 한다.
+	  
+	  
+	  
+ -->
+ 
+<!--  namespace는 DAO인터페이스의 경로를 적어줌
+ 이유 : dao인터페이스에 선언된 메소드 이름과 여기 id값을  매핑시켜야 하기 때문 
+ 즉, 작업해야하는 dao인터페이스의 패키지명을 적어줘야한다. --> 
+ 
+<mapper namespace="com.crescendo.spring.admin.model.dao.payok.IPayOkDAO">
+
+<!-- 
+	private int poNum;						// 결제완료번호
+	private String prjTitle, proSta;		// 프로젝트제목, 프로젝트상태
+	private String userName;				// 후원자
+	private String fName, fTel, fAddr;		// 배송이름, 배송전화번호, 배송지
+	private String poDate, proShip;			// 결제완료 일자, 배송상태
+	
+ -->
+
+	<resultMap type="PayOkVO" id="payokResultSet">
+		<id column="PO_NUM" property="poNum"/>
+		<result column="PR_NUM" property="prNum"/>
+		<result column="PO_DATE" property="poDate"/>
+		<result column="PO_STA" property="poSta"/>
+		<result column="PO_MONEY" property="poMoney"/>
+		<result column="PO_AGREE" property="poAgree"/>
+		<result column="IMP_UID" property="impUid"/>
+		<result column="RE_NAME" property="reName"/>
+		<result column="F_INQUIRE" property="fInquire"/>
+		<result column="MA_PREDICT" property="maPredict"/>
+		<result column="USER_NAME" property="userName"/>
+		<result column="F_NAME" property="fName"/>
+		<result column="F_TEL" property="fTel"/>
+		<result column="F_ADDR" property="fAddr"/>
+	</resultMap>
+	
+	<!-- 결제 완료 출력(관리자) -->
+	<select id="payOkList" resultType="PayOkVO">
+
+		SELECT PO_NUM,PRJ_TITLE,PRO_STA,USER_NAME,F_NAME,F_TEL,F_ADDR,TO_CHAR(PO_DATE,'YYYY-MM-DD') AS "PO_DATE",PRO_SHIP ,PO_MONEY,
+		FROM VIEW_ALL6
+		WHERE PO_STA='Y'
+		GROUP BY PO_NUM,PRJ_TITLE,PRO_STA,USER_NAME,F_NAME,F_TEL,F_ADDR,PO_DATE,PRO_SHIP ,PO_MONEY,PRO_NUM
+		ORDER BY PO_NUM DESC
+	</select>
+	
+	<!-- 이니시스창 결제 성공시 데이터 INSERT -->
+	<insert id="insertPayOk">
+		INSERT INTO TBL_PAY_OK(PO_NUM,PR_NUM,PO_DATE,PO_STA,PO_MONEY,PO_AGREE,IMP_UID)
+		VALUES(SEQ_PAY_OK.NEXTVAL,#{prNum},SYSDATE,'Y',#{poMoney},#{poAgree},#{impUid})
+	</insert>
+	
+	
+
+	
+	<!-- 관리자메인 > 결제현황 -->
+	<select id="payOkCount" resultType="java.lang.Integer">
+		SELECT count(*)
+		FROM tbl_pay_ok
+		WHERE PO_STA='Y'	
+	</select>
+	
+	<!-- 결제완료 확인 내역 -->
+	<select id="confirmPay" resultType="PayOkVO">
+		SELECT PO_NUM,PR_NUM, RE_NAME, F_INQUIRE, MA_PREDICT, PO_MONEY, USER_NAME, F_NAME, F_TEL, F_ADDR
+		FROM VIEW_ALL8
+		WHERE PR_NUM= #{prNum}
+	</select>
+	
+</mapper>

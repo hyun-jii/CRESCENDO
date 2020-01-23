@@ -1,0 +1,80 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  namespace는 패키지 경로를 포함한 전체이름을 가진 구문을 구분하기 위해 필수로 사용해야한다.
+	  namespace는 인터페이스 바인딩을 가능하게 한다.
+	  
+	 -->
+ 
+<mapper namespace="com.crescendo.spring.admin.model.dao.notice.INoticeDAO">
+
+
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+   <!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+   <!--  type은 VO명 id아무거나  -->
+   <!--  property = vo안에 속성이름 -->
+   <!--  resultMap type안에 NoticeVO는 config.xml파일에서 설정해준 값 사용 -->
+   <resultMap type="NoticeVO" id="noticeResultSet">
+      <id column="NO_NUM" property="noNum"/>
+      <result column="ADMIN_NUM" property="adminNum"/>
+      <result column="NO_TITLE" property="noTitle" />
+      <result column="NO_CONTENT" property="noContent"/>
+      <result column="NO_DATE" property="noDate"/>
+   </resultMap>
+	
+	
+	<!-- 공지사항 출력하는 구문 -->
+	<select id="noticeList" resultType="NoticeVO">
+		SELECT NO_NUM ,NO_TITLE,TO_CHAR(NO_DATE,'YYYY-MM-DD') AS NO_DATE, NO_CONTENT
+		FROM TBL_NOTICE
+		ORDER BY NO_NUM
+	</select>
+	
+	
+	<!-- 공지사항 삭제하는 구문 -->
+	<delete id="deleteNotice" >
+		DELETE
+		FROM TBL_NOTICE
+		WHERE NO_NUM = #{noNum}
+	</delete>
+
+	
+
+	<!-- 공지사항 insert하는 부분 -->
+	<insert id="insertNotice">
+		INSERT INTO TBL_NOTICE (NO_NUM, ADMIN_NUM,NO_TITLE,NO_CONTENT,NO_DATE)
+		VALUES(SEQ_NOTICE.NEXTVAL,9999,#{noTitle},#{noContent},TO_CHAR(SYSDATE,'YYYY-MM-DD'))
+	</insert>
+
+	
+	<!-- 공지사항 확인 폼에 데이터 보내기 -->
+	<select id="noticeConfirm" resultType="NoticeVO">
+		SELECT NO_TITLE, NO_CONTENT
+		FROM TBL_NOTICE
+		WHERE NO_NUM = #{noNum} 
+	</select>
+	
+	<!-- 공지사항 엡데이트 폼에 데이터 보내기 -->
+	<select id="updateNoticeConfirm" resultType="NoticeVO">
+		SELECT NO_TITLE, NO_CONTENT, NO_NUM
+		FROM TBL_NOTICE
+		WHERE NO_NUM = #{noNum} 
+	</select>
+	
+	
+	<!-- 공지사항 update 하는 구문 -->
+	<update id="updateNotice" >
+		UPDATE TBL_NOTICE
+		SET NO_TITLE=#{noTitle}, NO_CONTENT=#{noContent}, NO_DATE=TO_CHAR(SYSDATE,'YYYY-MM-DD')
+		WHERE NO_NUM=#{noNum}
+	</update>
+	
+	<!-- 사용자의 공지사항 내용 출력하는 구문 → 강초롱 -->
+	<select id="contentList" resultType="NoticeVO">
+		SELECT NO_TITLE, NO_CONTENT, NO_DATE
+		FROM TBL_NOTICE
+		WHERE NO_NUM = #{noNum} 
+	</select>
+	
+
+
+</mapper>

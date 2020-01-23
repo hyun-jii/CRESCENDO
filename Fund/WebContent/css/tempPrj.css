@@ -1,0 +1,219 @@
+@charset "UTF-8";
+/* 체크박스 */
+.myCheckDiv
+{
+	margin-left: 280px;
+}
+
+.myCheck
+{
+	height: 16px;
+	width: 16px;
+	border: none;
+	margin-left: 100px;
+}
+
+/* 작성일 */
+.writeDate
+{
+	margin-bottom: 30px;
+	margin-left: 150px;
+	font-size: 13px;
+	font-weight: bold;
+}
+
+/* 임시저장 상태 텍스트 */
+.tempCount {
+
+	padding-left: 36px;
+	font-size: 18px;
+	float: left;
+	margin-top: 10px;
+}
+
+.totalCount {
+	font-size: 21px;
+	color: #ffc425;
+}
+
+/* 모두선택 버튼 */
+#tempBtn {
+	background-color: #ffc425;
+	color: #fff;
+	border: none;
+	margin-top: 10px;
+	width: 70px;
+	font-weight: bold;
+	font-size: 15px;
+	border-radius: 3px;
+	margin-left: 630px;
+	padding: 5px;
+	/* margin-left: -160px; */
+}
+
+#tempBtn:focus {
+	outline: none;
+}
+
+
+/* 삭제버튼 */
+#cancleButton 
+{
+	background-color: #666;
+	font-weight: bold;
+	font-size: 15px;
+	color: #fff;
+	border: none;
+	width: 70px;
+	height: 28px;
+	float: right;
+	margin-right: 30px;
+	border-radius: 3px;
+	margin-top: -150px;
+	margin-left: 100px;
+	
+
+}
+
+#cancleButton:focus {
+	outline: none;
+}
+
+
+
+.allLike
+{
+   text-align: center;
+}
+
+.mypageImage
+{
+   background-color: #dcdcdc;
+   height: 350px;
+   margin: 0 auto;
+
+}
+.mypageLikeText
+{
+   text-align: center;
+   margin-top: 20px;
+   font-weight: bold;
+   font-size: 25px;
+   color: black;
+}
+
+.pagination a {
+  color: black;
+  float: left;
+  padding: 2px 8px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+@media (max-width:767px)
+{
+   .myCheckDiv
+	{
+		margin-left: 360px;
+	}
+   
+   .mypageImage
+   { 
+      width: 210%;   
+      float: left;
+      margin-top: 40px;
+   }
+   .allLike
+   {
+         margin-top: -40px;
+         float:left;
+         width:30%;
+   }
+   .item
+   {   
+       margin-bottom: 50px;
+       width: 190%;
+   }
+   .pagination
+   {
+         width: 80%;
+   }
+   .myCheck
+    {
+		height: 16px;
+		width: 16px;
+		border: none;
+		margin-left: 100px;
+    }
+    #cancleButton
+    {
+    	margin-top: 10px;
+    	margin-right: -40px;
+    }
+    .pagination
+    {
+        width: 250px;
+        margin-left: -400px;
+    }
+    .tempCount
+    {
+    	width: 250px;
+    }
+    .tempBtn2
+    {
+    	margin-left: -280px;
+    }
+
+}
+
+@media (max-width:400px)
+{
+	#tempBtn 
+	{
+		margin-left: 40px;
+	}
+    .myCheckDiv
+	{
+		margin-left: 300px;
+	}
+   
+   .mypageImage
+   { 
+      width: 210%;  
+      float: left;
+      margin-top: 50px;
+   }
+   .allLike
+   {
+         margin-top: -40px;
+         float:left;
+         width:30%;
+   }
+   .item
+   {   
+       margin-bottom: 50px;
+       width: 190%;
+   }
+   .pagination
+   {
+         width: 130%;
+   }
+ 
+   .myCheck
+    {
+		height: 16px;
+		width: 16px;
+		border: none;
+		margin-left: 100px;
+    }
+}
+
+

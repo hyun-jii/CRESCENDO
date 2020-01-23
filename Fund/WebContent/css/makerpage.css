@@ -1,0 +1,142 @@
+@charset "UTF-8";
+.all_like
+{
+   text-align: center;
+   border:1px solid #cccccc;
+}
+.myPage
+{
+   height: 2000px;
+}
+.mypage_image
+{
+   background-color: #dcdcdc;
+   height: 350px;
+   width: 100%;
+   margin: 0 auto;
+}
+.mypage_liketext
+{
+   text-align: center;
+   margin-top: 20px;
+   font-weight: bold;
+   font-size: 25px;
+   color: black;
+}
+.zzim{margin:0 auto; text-align: center;}
+
+.item 
+{
+    height: 40%;
+    width: 30%;
+    float: left;
+    margin-left: 30px;
+}
+.product-grid
+{
+   margin-top: 50px;
+   height: 100%;
+
+}
+.fa-star
+{
+   font-size: 20px;
+   text-align: right;
+   margin-top: 15px;
+}
+.fa-star:hover
+{
+   color: orange;
+   
+}
+.pagination a {
+  color: black;
+  float: left;
+  padding: 2px 8px;
+  text-decoration: none;
+  transition: background-color .3s;
+}
+
+.pagination a.active {
+  background-color: dodgerblue;
+  color: white;
+}
+
+.pagination a:hover:not(.active) {background-color: #ddd;}
+
+
+@media (max-width:767px)
+{
+   
+   
+   .mypage_image
+   { 
+      width: 100%;   
+      margin-bottom: 30px;
+   }
+   .all_like
+   {
+         margin-top: -50px;
+         float:left;
+         width:30%;
+         
+   }
+   .item
+   {   
+       margin-bottom: 50px;
+       width: 110%;
+ 
+   }
+   .pagination
+   {
+         width: 100%;
+         margin-left:140px;
+   }
+}
+
+@media (max-width:992px)
+{
+   .all_like
+   {
+   
+         width:100%;
+         margin-top:50px;
+
+   }
+   .item
+    {
+       margin-bottom: 20px;
+       width: 43%;
+   }
+   .makerPage
+	{
+ 		border:none;
+	}	
+	
+}
+
+@media (max-width:1000px)
+{
+   .item
+    {
+    
+       margin-bottom: 20px;
+   }
+}
+
+.clear{clear: both;}
+.makerPage
+{
+ 	height: 1700px;
+}	
+
+.makerTitle
+{
+	text-align: left;
+    font-size: 19px;
+    font-weight: bold;
+    color: #333;
+    margin-left: 28px;
+    margin-top: 20px;
+    margin-bottom: -30px;
+}

@@ -1,0 +1,33 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.crescendo.spring.user.model.dao.fund.IFundDAO">
+<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+   <!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+   <!--  type은 VO명 id아무거나  -->
+   <!--  property = vo안에 속성이름 -->
+   <!--  resultMap type안에 NoticeVO는 config.xml파일에서 설정해준 값 사용 -->
+   <resultMap type="FundVO" id="fundResultSet">
+      <id column="F_NUM" property="fNum"/>
+      <result column="USER_NUM" property="userNum"/>
+      <result column="F_NAME" property="fName" />
+      <result column="F_ADDR" property="fAddr"/>
+      <result column="F_TEL" property="fTel"/>
+      <result column="F_DATE" property="fDate"/>
+      <result column="F_INQUIRE" property="fInquire"/>
+      <result column="F_COUNT" property="fCount"/>
+      <result column="RE_NUM" property="reNum"/>
+      <result column="F_ZIPCODE" property="fZipcode"/>
+   </resultMap>
+   
+   <!-- 후원하기 INSERT -->
+   <insert id="deleveryInsert">
+   		INSERT INTO TBL_FUND(F_NUM, USER_NUM, RE_NUM, F_NAME, F_ADDR, F_TEL, F_DATE, F_INQUIRE, F_COUNT, F_ZIPCODE)
+		VALUES(SEQ_FUND.NEXTVAL, #{userNum}, #{reNum}, #{fName}, #{fAddr}, #{fTel}, TO_CHAR(SYSDATE,'YYYY-MM-DD'), #{fInquire}, #{fCount}, #{fZipcode})
+	<selectKey keyProperty="fNum" resultType="int" order="AFTER">
+	  	 SELECT SEQ_FUND.CURRVAL FROM DUAL
+	</selectKey>
+   </insert>
+   
+
+</mapper>

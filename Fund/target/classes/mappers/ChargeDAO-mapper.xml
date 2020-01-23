@@ -1,0 +1,115 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<mapper namespace="com.crescendo.spring.admin.model.dao.charge.IChargeDAO">
+
+
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+   <!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+   <!--  type은 VO명 id아무거나  -->
+   <!--  property = vo안에 속성이름 -->
+   <!--  resultMap type안에 NoticeVO는 config.xml파일에서 설정해준 값 사용 -->
+   <resultMap type="ChargeVO" id="chargeResultSet">
+      <id column="CHA_NUM" property="chaNum"/>
+      <result column="ADMIN_NUM" property="adminNum"/>
+      <result column="CHA_DATE" property="chaDate" />
+      <result column="CHA_CONTENT" property="chaContent"/>
+   </resultMap>
+   
+    <resultMap type="PersonVO" id="personResultSet">
+      <id column="P_NUM" property="pNum"/>
+      <result column="ADMIN_NUM" property="adminNum"/>
+      <result column="P_DATE" property="pDate" />
+      <result column="P_CONTENT" property="pContent"/>
+   </resultMap>
+   
+  
+	<resultMap type="AdminPromiseVO" id="adminPromiseResultSet">
+      <id column="PRO_NUM" property="proNum"/>
+      <result column="ADMIN_NUM" property="adminNum"/>
+      <result column="PRO_RULES" property="proRules" />
+      <result column="PRO_SERVICE" property="proService"/>
+      <result column="PRO_USERINFO" property="proUserInfo"/>
+      <result column="PRO_DUTY" property="proDuty"/>
+      <result column="PRO_CREATION" property="proCreation"/>
+      <result column="PRO_SUPPORT" property="proSupport"/>
+      <result column="PRO_ETC" property="proEtc"/>
+      <result column="PRO_DATE" property="proDate"/>
+   </resultMap>
+   
+   
+   
+    <!-- 이용약관 출력 -->
+	<select  id="promiseList" resultType="AdminPromiseVO">
+		SELECT PRO_NUM, PRO_RULES,PRO_SERVICE, PRO_USERINFO, PRO_DUTY, PRO_CREATION, PRO_SUPPORT, PRO_ETC, PRO_DATE
+		FROM TBL_PROMISE
+	</select>
+   
+   <!-- 개인정보 처리방침 출력  -->
+   <select id="personList" resultType="PersonVO">
+   		SELECT P_NUM, ADMIN_NUM, P_DATE, P_CONTENT
+   		FROM TBL_PERSON
+   </select>
+   
+   <!-- 수수료 정책  출력  -->
+   <select id="chargeList" resultType="ChargeVO">
+   		SELECT CHA_NUM, ADMIN_NUM, CHA_DATE, CHA_CONTENT
+   		FROM TBL_CHARGE
+   </select>
+   
+   
+   <!-- 수수료 정책 수정폼 출력 -->
+   <select id="chargeUpdateForm" resultType="ChargeVO">
+   		SELECT CHA_NUM, ADMIN_NUM, CHA_DATE, CHA_CONTENT
+   		FROM TBL_CHARGE
+   		WHERE CHA_NUM = #{chaNum}
+   </select>
+   
+     <!-- 개인정보 처리방침 수정폼 -->
+   <select id="personUpdateForm" resultType="PersonVO">
+        SELECT P_NUM, ADMIN_NUM, P_DATE, P_CONTENT
+   		FROM TBL_PERSON
+   		WHERE P_NUM=#{pNum}
+   </select>
+   
+    <!-- 이용약관 수정폼에 데이터 보내기  -->
+	<select  id="promiseUpdateForm" resultType="AdminPromiseVO">
+		SELECT  PRO_NUM, PRO_RULES, PRO_SERVICE, PRO_USERINFO, PRO_DUTY, PRO_CREATION, PRO_SUPPORT, PRO_ETC, PRO_DATE
+		FROM TBL_PROMISE
+		WHERE PRO_NUM=#{proNum}
+	</select>
+	
+	
+   
+   <!-- 수수료 정책 수정 -->
+   <update id="chargeUpdate">
+   		UPDATE TBL_CHARGE
+   		SET CHA_CONTENT=#{chaContent}, CHA_DATE=SYSDATE
+   		WHERE CHA_NUM = #{chaNum}
+   </update>
+  
+   
+   <!-- 개인정보 처리방침 수정 -->
+   <update id="personUpdate">
+   	  UPDATE TBL_PERSON
+   	  SET P_CONTENT = #{pContent}, P_DATE=SYSDATE
+   	  WHERE P_NUM=#{pNum}
+   </update>
+   
+  
+	<!-- 이용약관 수정  -->
+	<update id="promiseUpdate">
+		UPDATE TBL_PROMISE
+		SET PRO_RULES=#{proRules}, PRO_SERVICE=#{proService}, PRO_USERINFO=#{proUserInfo},
+		PRO_DUTY=#{proDuty}, PRO_CREATION=#{proCreation}, PRO_SUPPORT=#{proSupport}, PRO_ETC=#{proEtc}
+		,PRO_DATE=SYSDATE
+		WHERE PRO_NUM=#{proNum}
+	</update>
+	
+   
+   
+   
+   
+ </mapper>
+

@@ -1,0 +1,107 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.crescendo.spring.common.model.dao.search.ISearchDAO">
+
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+	<!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+	<!--  type은 VO명 id아무거나  -->
+	<!--  property = vo안에 속성이름 -->
+	<!--  resultMap type은 config.xml파일에서 설정해준 값 사용 -->
+	<resultMap type="ProjectPageVO" id="projectPageResultSet">
+		<id column="USER_NUM" property="userNum"/>
+		<result column="USER_NAME" property=" userName"/>
+		<result column="USER_EMAIL" property="userEmail"/>
+		<result column="F_NUM" property="fNum"/>
+		<result column="RE_NUM" property="reNum"/>
+		<result column="F_NAME" property="fName"/>
+		<result column="F_ADDR" property="fAddr"/>
+		<result column="F_TEL" property="fTel"/>
+		<result column="F_INQUIRE" property="fInquire"/>
+		<result column="F_COUNT" property="fCount"/>
+		<result column="PR_NUM" property="prNum"/>
+		<result column="PR_CARD" property="prCard"/>
+		<result column="PR_BIRTH" property="prBirth"/>
+		<result column="PR_PW" property="prPw"/>
+		<result column="PR_EXPIRE" property="prExpire"/>
+		<result column="PR_DATE" property="prDate"/>
+		<result column="PR_KEY" property="prKey"/>
+		<result column="PO_NUM" property="poNum"/>
+		<result column="PO_DATE" property="poDate"/>
+		<result column="PO_STA" property="poSta"/>
+		<result column="PO_MONEY" property="poMoney"/>
+		<result column="CA_NUM" property="caNum"/>
+		<result column="CA_NAME" property="caName"/>
+		<result column="PRJ_NUM" property="prjNum"/>
+		<result column="PRJ_TITLE" property="prjTitle"/>
+		<result column="PRJ_SNAME" property="prjSname"/>
+		<result column="PRJ_GOAL" property="prjGoal"/>
+		<result column="PRJ_IMG" property="prjImg"/>
+		<result column="PRJ_TAG" property="prjTag"/>
+		<result column="PRJ_CONTENT" property="prjContent"/>
+		<result column="RE_NAME" property="reName"/>
+		<result column="RE_CONTENT" property="reContent"/>
+		<result column="RE_MONEY" property="reMoney"/>
+		<result column="RE_LIMIT" property="reLimit"/>
+		<result column="MA_NUM" property="maNum"/>
+		<result column="MA_NAME" property="maName"/>
+		<result column="MA_INFO" property="maInfo"/>
+		<result column="MA_PERIOD" property="maPeriod"/>
+		<result column="MA_PREDICT" property="maPredict"/>
+		<result column="FINAL_NUM" property="finalNum"/>
+		<result column="FINAL_STA" property="finalSta"/>
+		<result column="FINAL_DATE" property="finalDate"/>
+		<result column="PRO_NUM" property="proNum"/>
+		<result column="PRO_STA" property="proSta"/>
+		<result column="PRO_SHIP" property="proShip"/>
+		<result column="PRO_FINISH" property="proFinish"/>
+		<result column="REMAIN_DAY" property="remainDay"/>
+		<result column="FINAL_DAY" property="finalDay"/>
+		<result column="PERCENT" property="percent"/>
+		<result column="TOTAL_MONEY" property="totalMoney"/>
+		<result column="SUPPORTER" property="supporter"/>
+	</resultMap>
+	
+	<!-- 추천 검색어 (제목) -->
+	<select id="searchBoxTitle" resultType="ProjectPageVO">
+		SELECT PRJ_TITLE
+		FROM VIEW_ALL6
+		WHERE PRO_NUM IS NOT NULL AND PRJ_TITLE LIKE '%' || #{prjTitle} || '%'
+		GROUP BY PRO_NUM, PRJ_TITLE
+	</select>
+	
+	<!-- 추천 검색어 (태그) -->
+	<select id="searchBoxTag" resultType="ProjectPageVO">
+		SELECT PRJ_TAG
+		FROM VIEW_ALL6
+		WHERE PRO_NUM IS NOT NULL AND PRJ_TAG LIKE '%' || #{prjTag} || '%'
+		GROUP BY PRO_NUM, PRJ_TAG
+	</select>
+	
+	<!-- 추천 검색어 (창작자) -->
+	<select id="searchBoxMaker" resultType="ProjectPageVO">
+		SELECT MA_NAME
+		FROM VIEW_ALL6
+		WHERE PRO_NUM IS NOT NULL AND MA_NAME LIKE '%' || #{prjMaker} || '%'
+		GROUP BY PRO_NUM, MA_NAME
+	</select>
+	
+	<!-- 검색 후 프로젝트 페이지(제목만 한정) -->
+	<select id="searchList" resultType="ProjectPageVO">
+		SELECT PRJ_TITLE, PRJ_IMG, MA_NAME, REMAIN_DAY, PERCENT, TOTAL_MONEY, SUPPORTER,PRO_NUM, USER_NUM
+		FROM VIEW_ALL6
+		WHERE FINAL_STA = '승인' AND PRJ_TITLE LIKE '%' || #{prjTitle} || '%'
+		GROUP BY PRO_NUM, PRJ_TITLE, PRJ_IMG, MA_NAME, REMAIN_DAY, PERCENT, TOTAL_MONEY, SUPPORTER, USER_NUM
+		ORDER BY REMAIN_DAY DESC, SUPPORTER
+	</select>
+	
+	<!-- 검색 후 프로젝트 수(제목만 한정) -->
+	<select id="searchCount" resultType="java.lang.Integer">
+		SELECT COUNT(DISTINCT(PRO_NUM))
+		FROM VIEW_ALL6
+		WHERE FINAL_STA = '승인' AND PRJ_TITLE LIKE '%' || #{prjTitle} || '%'
+		GROUP BY PRO_NUM, PRJ_TITLE
+	</select>
+	
+
+</mapper>

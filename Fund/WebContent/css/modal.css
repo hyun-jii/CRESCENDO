@@ -1,0 +1,55 @@
+@charset "UTF-8";
+
+.modalComent
+{
+	font-size: 15px;
+	text-align: center;
+	font-weight: bold;
+	color:#666
+	
+}
+
+.modalCancle
+{
+	width:70px; height:30px; background-color: #cccccc;
+	color:#fff; font-size: 14px; border:none; outline: none;
+	border-radius: 2px;
+}
+
+.modalExit
+{
+	width:90px; height:30px; background-color: #ffc81e;
+	color:#fff; font-size: 14px; border:none; outline: none;
+	border-radius: 2px;
+}
+
+.modal-footer
+{
+	text-align: center;
+}
+
+.modalarea
+{
+	width:100%;
+	font-size: 15px;
+}
+#myModalLabel
+{
+	font-size: 16px;
+	color:#666;
+	margin-left: 200px;
+	font-weight: bold;
+}
+.margin-top
+{
+	margin-top: 10px;
+}
+
+.modal-header
+{
+	background-color: cornsilk;
+}
+#modal-33
+{
+	color:red;
+}

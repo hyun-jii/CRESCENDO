@@ -1,0 +1,221 @@
+#mainMenuBar {
+    margin-bottom: 20px;
+    box-shadow: 0px 0px 5px #ccc;
+    position: relative;
+}
+#mainLogo {
+    height: 70px;
+    width: auto;
+} 
+.mainBtn {
+	width: 200px;
+	height: 100px;
+	position: absolute;
+	z-index: 5000;
+	top: 0;
+	left: 0;
+	right: 0;
+	margin: auto;
+ 	cursor: pointer;
+}
+#mainLogoArea {
+    display: block;
+    float: left;
+    text-align: center;
+    position: absolute;
+    top: 0;
+    bottom: 0;
+    right: 0;
+    left: 0;
+    margin: 0 auto;
+}
+#mainLogiArea img {
+    z-index: 5000;
+}
+#naviBar {
+    padding-top: 30px;
+}
+#mainLogoArea span {
+    display: inline-block;
+    line-height: 50px;
+    height: 50px;
+    border: 1px dashed #ccc;
+}
+#menuText, #loginMenuText {
+    vertical-align: super;
+}
+#mainMenuBar .loginInfoArea {
+    right: 10px;
+    padding: 10px;
+    width: 300px;
+}
+#mypageMenu {
+    border-radius: 5px;
+    position: absolute;
+    padding: 15px;
+    width: 260px;
+    height: 140px;
+    border: 1px solid #ccc;
+    background-color: #fff;
+
+}
+#login-table {
+    width: 100%;
+    border-spacing: 5px;
+    border-collapse: separate;
+}
+#mainMenuBar .loginmenuText {
+    font-size: 14px;
+}
+#mainMenuBar .submenu {
+    font-size: 15px;
+    color: #888;
+    padding-left: 40px;
+}
+/* 커스텀 체크박스 색 변경하는 CSS */
+#mainMenuBar .custom-control-input:checked~.custom-control-label::before {
+color: #fff;
+border-color: #8E44AD;
+background-color: #8E44AD;
+}
+#loginBtn {
+    background-color: #FFCD01;
+    color: #fff;
+    font-weight: 900;
+}
+#loginBtn:hover {
+    background-color: #F39C12;
+}
+#mainMenuBar .naverKakaoArea img {
+    width: 40px;
+    height: auto;
+}
+/* 마우스 오버 툴팁 색상 코드 지정 */
+.tooltip-inner {
+    background-color: #F39C12 !important;
+}
+.bs-tooltip-auto[x-placement^=left] .arrow::before, .bs-tooltip-left .arrow::before {
+    border-left-color: #F39C12;
+}
+/* 마우스 오버 툴팁 색상 지정 끝 */
+#veil {
+    display: none;
+    z-index: 5;
+    width: 100%;
+    height: 100%;
+    position: fixed;
+    top: 0;
+    left: 0;
+}
+.loginmenu {
+    z-index: 1021;
+}
+#login-menu {
+    display: none;
+}
+#titleSearch  {
+    border:none;
+    text-align: right;
+    background-color: rgba(255,255,255,0);
+}
+.navbar-nav .dropdown-menu {
+    z-index: 1021;
+}
+#titleSearch:focus  {
+    outline: none;
+}
+#titleSearchSubmit {
+    cursor: pointer;
+}
+/* 화면 가로크기 990 이하일때 설정  */
+@media all and (max-width: 990px) {
+    #titleSearchForm {
+        display: none;
+    }
+    #menuIcon {
+        display: none;
+    }
+}
+#top_btn {
+    position: fixed;
+    right: 2%;
+    bottom: 40px;
+    display: none;
+    z-index: 1000;
+    cursor: pointer;
+}
+#top_btn img {
+    width: 40px;
+    height: 40px;
+}
+/* footer관련 */
+body {
+    position: relative;
+    min-height: 100%;
+    padding-bottom: 200px;
+}
+#footer {
+    position: absolute;
+    bottom: 0;
+}
+
+
+/* 로그인 후 마이페이지모달*/
+.hr-sect {
+	display: flex;
+	flex-basis: 100%;
+	align-items: center;
+	color: rgba(0, 0, 0, 0.35);
+	font-size: 14px;
+	margin: 8px 0px;
+}
+.hr-sect::before, .hr-sect::after {
+	content: "";
+	flex-grow: 1;
+	background: rgba(0, 0, 0, 0.35);
+	height: 1px;
+	font-size: 0px;
+	line-height: 0px;
+	margin: 0px 16px;
+}
+
+#mypageMenu #userProfileImage{
+	width: 50px;
+	height: auto;
+	border: 1px solid #444;
+}
+
+#myinfobtn{
+	border-top: 1px solid rgba(0, 0, 0, 0.35);
+	margin: 8px 0px;
+	padding-top: 30px;
+	
+}
+
+#logoutbtn{
+	background-color: #8E44AD;
+	color: #fff;
+   /*  font-weight: 900; */
+}
+
+#mypagebtn{
+	background-color: #F39C12;
+	color: #fff;
+    /* font-weight: 900; */
+}
+
+#myinfosub i{
+	vertical-align: super;
+	font-size: 40px;
+}
+
+#myinfosub a{
+	/* text-decoration: none; */
+	color: #444;
+}
+
+
+
+
+
+

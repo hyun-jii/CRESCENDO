@@ -1,0 +1,116 @@
+@charset "UTF-8";
+
+
+.blank
+{
+	margin-top: 100px;
+}
+
+.txt2
+{
+	color: black;
+	text-align: center;	
+}
+/* 실선 스타일 */
+.line
+{ 
+	margin: 0  auto;
+	color: blue; 
+	size: 30; 
+	width: 65%;
+	background-color: #ffc425;
+	height: 2px;
+}
+
+.hor2
+{
+	margin: 0  auto;
+	color: blue; 
+	size: 30; 
+	width: 50%;
+	background-color: #CACACA;
+	height: 1px;
+	margin-bottom: 20px;
+	margin-top: 20px;
+}
+
+/* 공지사항 이름 설정 */
+.top
+{
+	margin: 0 auto;
+	text-align: center;
+	width: 100%;
+	color: black;
+}
+h5
+{
+	text-align: center;
+	width:100%; 
+	color: black;  
+	font-size: 15px;
+	margin: 0 auto;
+}
+
+h3
+{
+	text-align: center; 
+	width:100%; 
+	color: black; 
+	font-weight: bold;
+	margin: 0 auto;
+}
+
+/* 공지사항 내용 제목 */
+.content
+{
+	text-align: center;
+}
+
+/* 공지사항 내용 */
+.content2
+{
+    margin: 0 auto;
+	border: none;
+	background-color: white;
+	color: black;
+}
+
+
+/* 목록으로 버튼 */
+.btnBoard 
+{
+  padding: 5px 8px;
+  font-size: 15px;
+  cursor: pointer;
+  outline: none;
+  color: #fff;
+  background-color: #ffc425;
+  border: none;
+  border-radius: 5px;
+  font-weight: bold;
+  margin-bottom: 30px;
+}
+
+.goList
+{
+	text-align: center;
+}
+
+.btnBoard :active 
+{
+  transform: translateY(4px);
+}
+
+
+/* 이전글, 다음글 버튼 */
+a {
+  text-decoration: none;
+  display: inline;
+  padding: 8px 15px;
+}
+
+a:hover {
+
+  color: black;
+}
+

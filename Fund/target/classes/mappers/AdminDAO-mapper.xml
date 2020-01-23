@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+<mapper namespace="com.crescendo.spring.admin.model.dao.IAdminDAO">
+
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+	<!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+	<!--  type은 VO명 id아무거나  -->
+	<!--  property = vo안에 속성이름 -->
+	<!--  resultMap type은 config.xml파일에서 설정해준 값 사용 -->
+	<resultMap type="AdminVO" id="adminResultSet">
+		<id column="ADMIN_NUM" property="adminNum"/>
+		<result column="ADMIN_EMAIL" property="adminEmail"/>
+		<result column="ADMIN_PW" property="adminPw"/>
+		<result column="ADMIN_DATE" property="adminDate"/>
+	</resultMap>
+	
+	<!-- 관리자 정보 조회 -->
+	<select id="getReadData" resultType="AdminVO">
+		SELECT ADMIN_NUM, ADMIN_EMAIL, ADMIN_PW, ADMIN_DATE
+		FROM TBL_ADMIN
+		WHERE ADMIN_EMAIL = #{adminEmail}
+	</select>
+	
+	<!-- 총 회원 수 조회 -->
+	<select id="userCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM TBL_USER
+	</select>
+	
+	<!-- 신규 회원 수 조회 -->
+	<select id="newUserCount" resultType="java.lang.Integer">
+		SELECT COUNT(*)
+		FROM TBL_USER
+		WHERE TO_CHAR(USER_INDATE, 'YYYY-MM-DD') = TO_CHAR(SYSDATE,'YYYY-MM-DD')
+	</select>
+	
+
+
+</mapper>

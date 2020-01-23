@@ -1,0 +1,45 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<mapper namespace="com.crescendo.spring.user.model.dao.project.step3.IStep3DAO">
+
+
+   
+   <resultMap type="Step3VO" id="step3ResultSet">
+      <id column="PRJ_NUM" property="prjNum"/>
+      <result column="RE_NUM" property="reNum"/>
+      <result column="RE_NAME" property="reName"/>
+      <result column="RE_CONTENT" property="reContent"/>
+      <result column="RE_MONEY" property="reMoney"/>
+      <result column="RE_LIMIT" property="reLimit"/>
+      <result column="RE_DATE" property="reDate"/>  
+   </resultMap>
+   
+   <!-- 프로젝트 step1 insert 부분 -->
+   <insert id="rewardInsert">        
+        INSERT INTO TBL_REWARD(RE_NUM,PRJ_NUM,RE_NAME,RE_CONTENT,RE_MONEY,RE_LIMIT,RE_DATE)
+		VALUES (SEQ_REWARD.NEXTVAL,#{prjNum},#{reName},#{reContent},#{reMoney},#{reLimit},TO_CHAR(SYSDATE,'YYYY-MM-DD'))     
+   </insert> 
+   
+   <select id="rewardList" resultType="Step3VO">
+   		SELECT RE_NUM, PRJ_NUM, RE_NAME, RE_CONTENT, RE_MONEY, RE_LIMIT, RE_DATE
+   		FROM TBL_REWARD
+   		WHERE PRJ_NUM = #{prjNum}
+   </select>
+   
+   <delete id="rewardDelete">
+   		DELETE
+   		FROM TBL_REWARD
+   		WHERE RE_NUM = #{reNum}
+   </delete>
+   
+   <!-- 리워드 3개까지 등록위해 카운트하는 부분 -->
+   <select id="rewardCount" resultType="java.lang.Integer">
+   		SELECT COUNT(RE_NUM)
+   		FROM TBL_REWARD
+   		WHERE PRJ_NUM = #{prjNum}
+   </select>
+ 
+ </mapper>
+

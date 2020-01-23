@@ -1,0 +1,50 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+
+ 
+<mapper namespace="com.crescendo.spring.user.model.dao.like.ILikeDAO">
+	<!--  반드시 select문이 있을 경우 명시해줘야한다. -->
+   <!--  데이터 겹침 방지 (다른곳에서 사용할때 )  -->
+   <!--  type은 VO명 id아무거나  -->
+   <!--  property = vo안에 속성이름 -->
+   <!--  resultMap type안에 NoticeVO는 config.xml파일에서 설정해준 값 사용 -->
+   <resultMap type="LikeVO" id="likeResultSet">
+      <id column="USER_NUM" property="userNum"/>
+	  <result column="USER_NAME" property="userName" />
+	  <result column="PRO_NUM" property="proNum" />
+	  <result column="LIKE_DATE" property="likeDate" />
+   </resultMap>
+   
+   
+    <!-- 찜한 프로젝트 출력 -->
+	<select resultType="LikeVO" id="likeList">
+		SELECT USER_NUM, USER_NAME, PRO_NUM, LIKE_DATE, PRJ_TITLE, PERCENT, TOTAL_MONEY, MA_NAME, REMAIN_DAY,PRJ_IMG, PRO_STA
+		FROM MYPAGE_LIKEVIEW
+		WHERE USER_NUM=#{userNum}
+		GROUP BY PRO_NUM, USER_NUM, USER_NAME, LIKE_DATE, PRJ_TITLE, PERCENT,TOTAL_MONEY, MA_NAME, REMAIN_DAY,PRJ_IMG, PRO_STA
+	</select>
+
+
+	<!-- 찜한 프로젝트 별클릭시 DB에서 삭제 -->
+
+	<update id="deleteLike">
+	     DELETE 
+         FROM TBL_LIKE
+         WHERE PRO_NUM=#{proNum} AND USER_NUM=#{userNum}
+	</update>
+	
+	<!-- 찜한 프로젝트 개수 출력 -->
+	<select resultType="java.lang.Integer" id="likeCount">
+		SELECT COUNT(DISTINCT(PRO_NUM))
+		FROM MYPAGE_LIKEVIEW
+		WHERE USER_NUM=#{userNum}
+    </select>
+    
+    <!-- 찜하기 insert -->
+	<insert id="insertLike">
+		INSERT INTO TBL_LIKE(USER_NUM, PRO_NUM, LIKE_DATE)
+		VALUES(#{userNum}, #{proNum}, SYSDATE)
+	</insert>
+
+	
+</mapper>

@@ -1,0 +1,128 @@
+@charset "UTF-8";
+.reward_checkbox
+{
+	margin-left: 0px;
+}
+
+.blank
+{
+	margin-top: 100px;
+}
+.sum
+{
+	font-weight: bold;
+}
+.remains
+{
+	color: red;
+}
+/*
+.fundCancel .fundNext {
+  background-color: orange;
+  border: none;
+  color: #ffffff;
+  cursor: pointer;
+  display: inline-block;
+  font-family: 'BenchNine', Arial, sans-serif;
+  font-size: 1em;
+  font-size: 22px;
+  line-height: 1em;
+  margin: 15px 40px;
+  outline: none;
+  padding: 12px 40px 10px;
+  position: relative;
+  text-transform: uppercase;
+  font-weight: 700;
+}
+.fundNext:before,
+.fundNext:after,
+.fundCancel:before,
+.fundCancel:after
+ {
+  border-color: transparent;
+  -webkit-transition: all 0.25s;
+  transition: all 0.25s;
+  border-style: solid;
+  border-width: 0;
+  content: "";
+  height: 24px;
+  position: absolute;
+  width: 24px;
+}
+.fundCancel:before,
+.fundNext:before {
+  border-color: #c47135;
+  border-right-width: 2px;
+  border-top-width: 2px;
+  right: -5px;
+  top: -5px;
+}
+.fundCancel:after,
+.fundNext:after {
+  border-bottom-width: 2px;
+  border-color: #c47135;
+  border-left-width: 2px;
+  bottom: -5px;
+  left: -5px;
+}
+.fundCancel:hover,
+.fundCancel.hover,
+.fundNext:hover,
+.fundNext.hover {
+  background-color: #c47135;
+}
+.fundCancel:hover:before,
+.fundCancel.hover:before,
+.fundCancel:hover:after,
+.fundCancel.hover:after,
+.fundNext:hover:before,
+.fundNext.hover:before,
+.fundNext:hover:after,
+.fundNext.hover:after {
+  height: 100%;
+  width: 100%;
+}
+*/
+.fundCancel
+{
+	background-color: gray;
+	width: 150px;
+	border: 0px;
+	color: white;
+	height: 50px;
+	font-weight: bold;
+	font-size: 15px;
+}
+
+.fundNext
+{
+	background-color: #ffc425;
+	width: 150px;
+	border: 0px;
+	color: white;
+	height: 50px;
+	font-weight: bold;
+	font-size: 15px;
+}
+.top-area
+{
+	text-align: center;
+}
+
+
+.reward-box 
+{
+    padding: 15px;
+    background: #f9f9f9;
+    border: 1px solid #fff;
+    border-radius: 5px;
+}
+
+html, body, div, main, section, article, h1, h2, h3, h4, p, blockquote, ul, ol, li, dl, dt, dd, table, thead, tbody, tr, th, td {
+   
+    padding: 0;
+}
+.rewardSelectBtn
+{
+	text-align: center;
+}

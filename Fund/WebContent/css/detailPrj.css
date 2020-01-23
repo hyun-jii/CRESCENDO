@@ -1,0 +1,226 @@
+@charset "UTF-8";
+
+.contxt
+{
+	color: black;
+	text-align: center;
+	font-size: 35px;
+	font-weight: bold;	
+}
+
+/* 프로젝트 이미지 및 창작자 닉네임 */
+.prjMaker
+{
+	width: 40px;
+	height: 40px;
+}
+.makeId
+{
+	text-align: center;
+}
+
+/* 프로젝트 제목 */
+.my-4
+{
+	text-align: center;
+	color: black;
+}
+
+/* 프로젝트 이미지 및 프로젝트 현황 */
+.row
+{
+	margin-top: 80px;
+}
+
+.img-fluid
+{
+	height: 550px;
+    width: 95%;	
+    max-width: 95%;
+    border-radius: 5px;
+}
+
+.my-3
+{
+	font-weight: bold;
+	font-size: 25px;
+	color: black;
+}
+
+p
+{
+	font-size: 20px;
+	color: black;	
+	margin-top: 3px;
+}
+
+.fundInfo
+{
+	color: black;
+	border: 1px;
+	background-color: #FFE5C2;
+	border-radius: 5px;
+	margin-top: 30px;
+}
+
+
+.fundIng
+{
+	margin-top: 8px;
+}
+
+/* 후원하기 버튼 */
+.btn4 
+{
+	padding: 6px 95px;
+	margin-right: 6px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #ffc425;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 20px;  
+}
+
+.btn4:hover 
+{
+	background-color: gray;
+}
+
+.btn4:active 
+{
+  transform: translateY(4px);
+}
+
+/* 프로젝트 내용 */
+.ProjectContent
+{
+	font-size: 17px;
+	background-color: white;
+	overflow: hidden;
+	border: none;
+	word-wrap: break-word;
+    word-break: keep-all;
+    word-spacing: 0.05em;
+}
+
+/* 공유하기 버튼 */
+.fa-share-alt-square
+{
+	    background-color: white;
+        border: none;
+        cursor: pointer; 
+        font-size: 45px;
+}
+
+.shareImg
+{
+	background-color: white;
+    border: none;
+    width: 10px;
+    height: 10px;
+    cursor: pointer;
+}
+
+/* 프로젝트 스토리 */
+.prjStory
+{
+	margin-top: 100px;
+	font-size: 25px;
+	color: black;
+}
+
+.storyLine
+{
+	width: 30%;
+	color: blue; 
+	text-align: left;
+	height: 10px;
+}
+
+/* 창작자 프로필 및 문의하기 */
+.profile
+{
+	margin-top: 100px;
+	font-size: 25px;
+	color: black;
+}
+
+.prjMaker2
+{
+	width: 40px;
+	height: 40px;
+}
+
+.makerId2
+{
+	text-align: left;
+}
+
+.makerId
+{
+	font-size: 20px;
+	text-align: center;
+}
+
+.makerLine
+{
+	width: 70%;
+	text-align: left;
+	height: 10px;
+	size: 10px;
+}
+
+
+.btn5 
+{
+	padding: 10px 80px;
+    font-size: 20px;
+    text-align: center;
+    cursor: pointer;
+    outline: none;
+    color: #fff;
+    background-color: #ffc425;
+    border: none;
+    border-radius: 5px;
+    font-weight: bold;
+    margin-top: 18px; 
+    width: 100%; 
+}
+
+.btn5:hover 
+{
+	background-color: gray;
+}
+
+.btn5:active 
+{
+  transform: translateY(4px);
+}
+
+.ImgMuffler
+{
+	height: 400px;
+    width: 95%;	
+    max-width: 95%;
+    border-radius: 5px;
+    margin-bottom: 50px;
+}
+
+
+/* 반응형 코드 */
+@media screen and (max-width: 1200px) {
+  .btn4
+  {
+  	padding: 10px 80px;
+  	font-size: 18px;
+  }
+  .btn5
+  {
+  	font-size: 18px;
+  }
+}

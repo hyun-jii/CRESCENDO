@@ -1,0 +1,99 @@
+<?xml version="1.0" encoding="UTF-8"?> 
+<!DOCTYPE configuration PUBLIC "-//mybatis.org//DTD Config 3.0//EN" "http://mybatis.org/dtd/mybatis-3-config.dtd">
+
+<configuration> 
+
+	<!-- 여러가지 기본 옵션을 지정합니다. -->
+	<settings> 
+	<!-- 오라클 필드 속성이 READ_COUNT 처럼 언더 스코어가 있을 때 
+	VO 의 readCount 처럼 카멜 케이스로 변환 되게 합니다. -->
+		<setting name="mapUnderscoreToCamelCase" value="true" />
+	</settings>
+	
+	
+	<!-- 경로를 간편하게 쓰기 위해 사용 VO(dto)등록 -->
+	<!--  mapper설정 방법 2가지중 첫번째 방법임 2번째는(Root.xml에서 property로 인터페이스마다 등록해줘야함) -->
+	<typeAliases>
+		<typeAlias  type="com.crescendo.spring.user.model.vo.UserVO" alias="UserVO"/>
+	
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.notice.NoticeVO" alias="NoticeVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.faq.FaqVO" alias="FaqVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.AdminVO" alias="AdminVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.how.AdminHowVO" alias="AdminHowVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.person.PersonVO" 	alias="PersonVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.category.CategoryVO" 	alias="CategoryVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.promise.AdminPromiseVO" alias="AdminPromiseVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.charge.ChargeVO" 	alias="ChargeVO"/>
+
+		<typeAlias  type="com.crescendo.spring.user.model.vo.log.LogVO" alias="LogVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.user.model.vo.out.UserOutVO" alias="UserOutVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.user.model.vo.project.app.AppVO" alias="AppVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.user.model.vo.mypagetemp.MypageTempVO" alias="MypageTempVO"/> 
+		
+		<typeAlias  type="com.crescendo.spring.user.model.vo.project.step2.Step2VO" alias="Step2VO"/>
+		
+		<typeAlias  type="com.crescendo.spring.user.model.vo.project.step3.Step3VO" alias="Step3VO"/>
+		
+		<typeAlias  type="com.crescendo.spring.user.model.vo.project.step4.Step4VO" alias="Step4VO"/>
+				
+		<typeAlias  type="com.crescendo.spring.user.model.vo.project.progress.ProgressVO" alias="ProgressVO"/>	
+			
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.Rletter.RletterVO" alias="RletterVO"/>
+
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.Sletter.SletterVO" alias="SletterVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.user.model.vo.letter.LetterVO" alias="LetterVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.user.model.vo.support.SupportVO" alias="SupportVO"/>
+
+        <typeAlias  type="com.crescendo.spring.user.model.vo.like.LikeVO" alias="LikeVO"/>
+        
+        <typeAlias  type="com.crescendo.spring.user.model.vo.make.MakeVO" alias="MakeVO"/>
+
+        
+		<typeAlias  type="com.crescendo.spring.user.model.vo.projectpage.ProjectPageVO" alias="ProjectPageVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.projectlistview2.ProjectListView2VO" alias="ProjectListView2VO"/>
+
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.projectlistview1.ProjectListView1VO" alias="ProjectListView1VO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.projectlistview3.ProjectListView3VO" alias="ProjectListView3VO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.projectlistview4.ProjectListView4VO" alias="ProjectListView4VO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.payok.PayOkVO" alias="PayOkVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.payback.PayBackVO" alias="PayBackVO"/>
+		
+		<typeAlias  type="com.crescendo.spring.admin.model.vo.admintotalmoney.AdminTotalMoneyVO" alias="AdminTotalMoneyVO"/>
+		
+		<typeAlias type="com.crescendo.spring.user.model.vo.fund.FundVO" alias="FundVO"/>
+		
+		<typeAlias type="com.crescendo.spring.board.VO.BoardVO" alias="BoardVO"/>
+		
+		<typeAlias type="com.crescendo.spring.user.model.vo.payrequest.PayRequestVO" alias="PayRequestVO"/>
+		
+		<typeAlias type="com.crescendo.spring.user.model.vo.make.MakeVO" alias="MakeVO"/>
+
+		<typeAlias type="com.crescendo.spring.user.model.vo.ffinal.FinalVO" alias ="FinalVO"/>
+		
+		<!-- 
+		summbernote용
+		<typeAlias type="com.crescendo.spring.BoardVO" alias="BoardVO" /> -->
+		
+		
+	</typeAliases> 
+	
+	
+	
+</configuration>
