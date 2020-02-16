@@ -65,3 +65,6 @@ MANIFEST.MF
 pom.properties
 
 /target/
+
+NaverLoginBO.java
+Login.jsp
