@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE mapper  PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN"  "http://mybatis.org/dtd/mybatis-3-mapper.dtd">
+<!--  namespace는 패키지 경로를 포함한 전체이름을 가진 구문을 구분하기 위해 필수로 사용해야한다.
+	  namespace는 인터페이스 바인딩을 가능하게 한다.
+	  
+	  
+	  
+ -->
+ 
+<!--  namespace는 DAO인터페이스의 경로를 적어줌
+ 이유 : dao인터페이스에 선언된 메소드 이름과 여기 id값을  매핑시켜야 하기 때문 
+ 즉, 작업해야하는 dao인터페이스의 패키지명을 적어줘야한다. --> 
+ 
+<mapper namespace="com.crescendo.spring.admin.model.dao.projectlistview2.IProjectListView2DAO">
+
+<!--  ProjectListView2  -->
+
+
+	<resultMap type="ProjectListView2VO" id="projectlistview2ResultSet">
+		<id column="APP_NUM" property="appNum"/>
+		<result column="FINAL_NUM" property="finalNum"/>
+		<result column="PRJ_NUM" property="prjNum"/>
+		<result column="CA_NUM" property="caNum"/>
+		<result column="PRJ_TITLE" property="prjTitle"/>
+		<result column="PRJ_GOAL" property="prjGoal"/>
+		<result column="MA_NAME" property="maName"/>
+		<result column="DE_CONTENT" property="deContent"/>
+		<result column="FINAL_DATE" property="finalDate"/>
+		<result column="MA_PERIOD" property="maPeriod"/>
+		<result column="FINAL_STA" property="finalSta"/>
+		<result column="PROJECT_DATE" property="projectDate"/>
+		 <result column="USER_NUM" property="userNum"/>
+	</resultMap>
+	
+	<!-- 프로젝트 거절 목록 리스트 -->
+	<select id="projectListDeny" resultType="ProjectListView2VO">
+		SELECT FINAL_NUM, APP_NUM, CA_NAME, PRJ_TITLE, PRJ_GOAL, MA_NAME, DE_CONTENT, TO_CHAR(TO_DATE(FINAL_DATE,'YYYY-MM-DD')) AS"FINAL_DATE", TO_CHAR(TO_DATE(PROJECT_DATE,'YYYY-MM-DD')) AS "PROJECT_DATE",USER_NUM
+		FROM VIEW_PRJ_DENY
+		WHERE FINAL_STA='거절'
+		GROUP BY FINAL_NUM, APP_NUM, CA_NAME, PRJ_TITLE, PRJ_GOAL, MA_NAME, DE_CONTENT, FINAL_DATE, PROJECT_DATE,USER_NUM
+		ORDER BY FINAL_DATE DESC
+	</select>
+	
+	<!-- 거절프로젝트 ->  승인대기프로젝트 (3개구문필요함)-->
+	   <delete id="deleteProject1">
+		   DELETE 
+		   FROM TBL_DENY
+		   WHERE DE_NUM=#{deNum}
+   </delete>
+	
+	<delete id="deleteProject2">
+		DELETE 
+		FROM TBL_FINAL
+		WHERE FINAL_NUM=#{finalNum}
+	</delete>
+	
+	<delete id="updateProject3" parameterType="ProjectListview2VO">
+		UPDATE TBL_APP 
+		SET EVA_NUM = 2
+		WHERE APP_NUM = #{appNum}
+	</delete>
+
+</mapper>	
